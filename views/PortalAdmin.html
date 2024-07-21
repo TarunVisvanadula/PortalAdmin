@@ -1,0 +1,740 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="Responsive, HTML5">
+    <!-- /meta tags -->
+    <title> Portal Admin</title>
+
+    <!-- Site favicon -->
+    <link rel="shortcut icon" href="../scripts/libs/CustomTheme/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- /site favicon -->
+    <!-- Font Icon Styles -->
+    <link href="../scripts/libs/CustomTheme/assets/fonts/noir-pro/styles.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/vendor/gaxon-icon/styles.css" rel="stylesheet" />
+    <!-- /font icon Styles -->
+    <!-- Perfect Scrollbar stylesheet -->
+    <link href="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <!-- /perfect scrollbar stylesheet -->
+
+
+    <link href="../scripts/libs/CustomTheme/assets/css/default/theme-semidark.min.css" rel="stylesheet" />
+    <link href="../Styles/PortalAdmin_driftTheme.css" rel="stylesheet" />
+
+    <script>
+        var rtlEnable = '';
+        var $mediaUrl = '';
+        var $baseUrl = '../';
+        var current_path = window.location.href.split('/').pop();
+        if (current_path == '') {
+            current_path = 'index.html';
+        }
+    </script>
+
+    <script src="../scripts/libs/CustomTheme/plugins/jquery/js/jquery.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/moment/js/moment.min.js"></script>
+    <!--<script src="../scripts/libs/CustomTheme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+    <!-- Perfect Scrollbar jQuery -->
+    <script src="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/sweetalert2/js/sweetalert2.js"></script>
+    <script src="../scripts/PortalAdmin.Common.js"></script>
+    <!-- /perfect scrollbar jQuery -->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Nunito');
+        @import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+        .modal-backdrop.show {
+            opacity: 0 !important;
+        }
+
+        .modal-open .modal {
+            overflow-x: hidden;
+            overflow-y: hidden !important;
+        }
+
+        .modal-content {
+            overflow-y: scroll !important;
+            height: 500px !important;
+        }
+
+        .modal-backdrop {
+            position: relative !important;
+        }
+
+        body, html {
+            height: 100%;
+            background-repeat: no-repeat; /*background-image: linear-gradient(rgb(12, 97, 33),rgb(104, 145, 162));*/
+            background: #512da8;
+            position: relative;
+        }
+
+        #particles-js {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: 50% 50%;
+            position: fixed;
+            top: 0px;
+            z-index: 1;
+        }
+
+        .Absolute-Center {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            right: 0;
+            top: 23vh;
+            z-index: 999;
+        }
+
+        .ISTLogo {
+            position: absolute;
+            top: 5rem;
+            right: 10rem;
+            z-index: 99999;
+        }
+
+        .swal2-container {
+            z-index: 9999999 !important
+        }
+
+        .swal2-popup {
+            padding: 1rem !important;
+        }
+
+        .swal2-icon {
+            width: 3em !important;
+            height: 3em !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 3em !important;
+        }
+
+        .swal2-icon-text {
+            font-size: 2.75em !important;
+        }
+
+        .swal2-popup .swal2-title {
+            font-size: 2rem !important;
+            margin: 0 !important;
+        }
+
+        .swal2-popup .swal2-actions {
+            margin: 1rem auto 0 !important;
+        }
+
+        .circle-icon {
+            background: #7a80d0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            vertical-align: middle;
+            padding: 5px;
+        }
+
+        .swal2-x-mark-line-right {
+            right: 9px !important
+        }
+
+        .swal2-x-mark-line-left {
+            left: 8px !important
+        }
+
+        .swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+            display: block;
+            position: absolute;
+            top: 1.3125em !important;
+            width: 1.9375em !important;
+            height: 0.3125em !important;
+            border-radius: .125em !important;
+            background-color: #f44336;
+        }
+
+        .swal2-success-line-long {
+            top: 25px !important;
+            right: 4px !important;
+            width: 1.9375em !important;
+        }
+
+        .swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
+            top: 27px !important;
+            left: 0px !important;
+            width: 1.5625em !important;
+            transform: rotate(45deg);
+        }
+
+        .swal2-icon.swal2-success .swal2-success-fix {
+            display: none !important
+        }
+    </style>
+</head>
+<body class="dt-layout--default dt-sidebar--fixed dt-header--fixed h-100">
+    <div class="modal fade" id="SupportForm" tabindex="-1" role="dialog"
+         aria-labelledby="model-8"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <!-- Modal Content -->
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title" id="model-8">
+                        We are here to help .... Get in touch
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- /modal header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <iframe id="ecubeAppsIfrm" height="900px" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none" src="https://contactusform.ecubeapps.com/SwiftForms/CreatePublic/t0YAAA"></iframe>
+                </div>
+
+
+            </div>
+            <!-- /modal content -->
+
+        </div>
+    </div>
+    <div class="modal fade" id="PortalLoginForm" tabindex="-1" role="dialog"
+         aria-labelledby="model-8"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <!-- Modal Content -->
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title" id="model-8">
+                        Sign in Portal for Arcgis
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- /modal header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="portalurl" class="col-form-label">Enter Portal URL</label>
+                            <input class="form-control form-control-sm " id="portalurl" name="Portal url"
+                                   type="text">
+                        </div>
+                        <div class="dt-card__body1 tabs-container">
+
+                            <!-- Tab Navigation -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#DirectLogin" role="tab" aria-controls="directLogin" aria-selected="true">Direct Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#OAuthLogin" role="tab" aria-controls="oAuth" aria-selected="true">OAuth Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#PkiLogin" role="tab" aria-controls="pkilogin" aria-selected="true">PKI or IWA  Login</a>
+                                </li>
+                            </ul>
+                            <!-- /tab navigation -->
+                            <!-- Tab Content -->
+                            <div class="tab-content">
+
+                                <!-- Tab Pane -->
+                                <div id="DirectLogin" class="tab-pane active">
+                                    <div class="card-body" style="padding:1rem !important">
+                                        <div class="form-group">
+                                            <label for="defaultForm-username" class="col-form-label">Enter Username</label>
+                                            <input class="form-control  form-control-sm " id="defaultForm-username" name="Username"
+                                                   type="text">
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="defaultForm-password" class="col-form-label">Enter Password</label>
+                                            <input class="form-control aut  form-control-sm " id="defaultForm-password" name="Password"
+                                                   type="password">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /tab pane-->
+                                <!-- Tab Pane -->
+                                <div id="OAuthLogin" class="tab-pane">
+                                    <div class="card-body" style="padding:1rem !important">
+                                        <div class="form-group">
+                                            <label for="appid" class="col-form-label">App ID</label>
+                                            <input class="form-control form-control-sm" id="appid" name="appid"
+                                                   type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <h6 style="line-height: 1.6;">Note: In order to log in to a Portal for ArcGIS instance using a SAML-based Identity Provider, you will need to Register Portal Admin as an application in your Portal, to generate an AppID that can identify this app as an allowed client of the Portal. To do so, follow the instructions <a href="http://server.arcgis.com/en/portal/latest/administer/linux/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B" style="text-decoration:underline" target="_blank">here</a> , using Application as the Type of App and https://aiapps.smartgeoapps.com/ as the Redirect URI.</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /tab pane-->
+                                <div id="PkiLogin" class="tab-pane">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <h6 style="line-height:1.6">Note: This login method is used for Portals with web-tier authentication, using username and password or client certificate (PKI) authentication methods, often referred to as “SSO” or Single Sign On). This authentication method is most often used for internal-facing Portals inside of an intranet. <a href="http://server.arcgis.com/en/portal/latest/administer/windows/use-integrated-windows-authentication-with-your-portal.htm" target="_blank" style="text-decoration:underline">More info</a></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tab content -->
+
+                        </div>
+
+
+                    </form>
+                </div>
+                <!-- /modal body -->
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm close_modal"
+                            data-dismiss="modal">
+                        CLOSE
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" id="LoginforPortal">
+                        LOGIN
+                    </button>
+                </div>
+                <!-- /modal footer -->
+
+            </div>
+            <!-- /modal content -->
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 ISTLogo"><a href="https://www.ispatialtec.com/" target="_blank"><img src="../Images/ist-white.png" alt="" /></a></div>
+        <div class="col-xl-4 col-sm-6 m-auto Absolute-Center">
+
+            <!-- Card -->
+            <h1 style="color:white;text-align:center">ARCGIS Enterprise Administration & Migration Software</h1>
+            <div class="card text-white bg-white">
+
+                <!-- Card Header -->
+                <h4 class="card-header bg-primary text-white shadow-xl"><img src="../Images/logo.png" class="w-50" alt="" /></h4>
+                <!-- /card header -->
+                <!-- Card Body -->
+                <div class="card-body">
+
+                    <!-- Card Title-->
+
+                    <button type="button" id="sign-in" class="btn btn-primary btn-block f-16">Sign in to ArcGIS Online</button>
+                    <button type="button" id="sign-in1" class="btn btn-secondary btn-block f-16" data-toggle="modal" data-target="#PortalLoginForm" data-backdrop="static" data-keyboard="false">
+                        Sign in to Portal for ArcGIS
+                    </button>
+
+                    <!-- /card text-->
+
+                </div>
+                <!-- /card body -->
+                <!-- Card Footer -->
+                <div class="card-footer text-dark text-center">
+                    <p>© 2020  <a href="https://www.ispatialtec.com/" class="ml-2">  iSpatial Techno Solutions</a>, All Rights Reserved </p>
+                    <div><span>For any assistance please <a href="javascript:void(0)" data-toggle="modal" data-target="#SupportForm">contact us </a></span> 
+					<span> Or </span>
+					<span>refer <a href="https://portaladmin.ispatialtec.com/" target="_blank"> Knowledge Base</a></span></div>
+
+                </div>
+                <!-- /card footer -->
+
+            </div>
+            <!-- /card -->
+
+        </div>
+
+    </div>
+    <div id="particles-js"></div>
+
+    <script src="https://js.arcgis.com/4.15/"></script>
+    <script src="../scripts/PortalAdmin.Common.js"></script>
+    <script src="../scripts/particles.js"></script>
+
+    <script>
+        require(["esri/request",
+            "esri/portal/Portal", "esri/identity/OAuthInfo", "esri/identity/IdentityManager", "esri/config"
+        ], function (esriRequest, Portal, OAuthInfo, esriId, esriConfig
+        ) {
+            var info, type ="Arcgisonline";
+            if (typeof (sessionStorage["portalInfo"]) != "undefined") {
+                if (sessionStorage["portalInfo"] != null) {
+                    portalInfo = JSON.parse(sessionStorage.getItem("portalInfo"));
+                    type = "PortalforArcgis";
+                    info = new OAuthInfo({
+                        appId: portalInfo.appId,
+                        portalUrl: portalInfo.portalUrl,
+                        popup: false
+                    });
+                }
+            }
+            else {
+                info = new OAuthInfo({
+                    appId: Config.appId,
+                    popup: false
+                });
+            }
+
+            esriId.registerOAuthInfos([info]);
+            esriId.checkSignInStatus(info.portalUrl + "/sharing")
+                .then(function (cred) {
+                    displayDashboard(cred,type);
+                })
+                .catch(function (e) {
+                    console.log(e);
+                    if (e.name != "identity-manager:not-authenticated") {
+                        AlertMessages("signin ArcgisOnline", e.message, "danger");
+                        return;
+                    }
+
+                });
+
+            function displayDashboard(cred,type) {
+                sessionStorage.removeItem("portalInfo");
+                $("#personalizedPanel").css("display", "block");
+                $("#user_name").text(cred.userId);
+                var portalUrl = cred.server;
+                var hostName = portalUrl.split('/');
+               
+                let portal = new Portal({
+                    url: portalUrl
+                });
+                portal.load().then(function (portalObj) {
+                    var portalObj = {
+                        token: cred.token,
+                        type: type,
+                        portalurl: portalUrl,
+                        username: cred.userId,
+                        portalid: portalObj.id,
+                        hostName: hostName[0] + "//" + hostName[1],
+                        PKIandIWFLogin: false
+                    }
+                    var options = {
+                        userName: cred.userId,
+                        portalUrl: cred.server,
+                        appType: type,
+                    }
+                    InsertUserData(options)
+                    $(".lds-ring").css("display", "block");
+                    sessionStorage.setItem("Accesskey", JSON.stringify(portalObj));
+                    window.location.href = "../views/Dashboard.html"
+                });
+            }
+
+            // document.getElementById("LoginforPortal").addEventListener("click", function () {
+            $("#LoginforPortal").click(function () {
+                // validating portal url
+                
+                $('#LoginforPortal').addClass('disabled')
+                var LoginMode = $(".tabs-container .active")[0].innerText;
+                var portalurl = $("#portalurl").val();
+                if (LoginMode == "OAuth Login")
+                    LoginWithAppID(portalurl);
+                else {
+
+                    GenerateTokenForPortal();
+                }
+            });
+            function LoginWithAppID(portalurl) {
+                var url = portalurl + "/sharing";
+                esriId.destroyCredentials();
+                var AppId = $("#appid")[0].value;
+                if (AppId == "") {
+                    AlertMessages("Signin Portal for ArcGIS", "Please enter AppId ", "danger");
+                    $('#LoginforPortal').removeClass('disabled');
+                    return;
+                }
+                var portalurl = $("#portalurl").val();
+                if (portalurl == "") {
+                    AlertMessages("Signin Portal for ArcGIS", "Please enter portal url ", "danger");
+                    $('#LoginforPortal').removeClass('disabled');
+                    return;
+                }
+                require([
+                    "esri/portal/Portal", "esri/identity/OAuthInfo", "esri/identity/IdentityManager"
+                ], function (Portal, OAuthInfo, esriId
+                ) {
+
+                    var info1 = new OAuthInfo({
+                        appId: AppId,
+                        portalUrl: portalurl,
+                        popup: false
+                    });
+                    var portalInfo = {
+                        appId: AppId,
+                        portalUrl: portalurl
+                    };
+                    sessionStorage.setItem("portalInfo", JSON.stringify(portalInfo));
+                    esriId.registerOAuthInfos([info1]);
+                    esriId.checkSignInStatus(info1.portalUrl + "/sharing").then(
+                        function (cred) {
+                            displayDashboard(cred);
+                        }
+                    ).catch(
+                        function (ee) {
+                            esriId.getCredential(info1.portalUrl);
+                        }
+                    );
+                });
+            };
+            function GenerateTokenForPortal() {
+                var username = $("#defaultForm-username").val();
+                var password = $("#defaultForm-password").val();
+                var portalurl = $("#portalurl").val();
+                var LoginMode = $(".tabs-container .active")[0].innerText;
+
+                var IsDetailsEntered = false;
+                if (LoginMode == "Direct Login") {
+                    var formaData = $("#loginForm").serializeArray();
+                    for (var i = 0; i < formaData.length; i++) {
+                        if (formaData[i].value == "" && formaData[i].name != "appid") {
+                            AlertMessages("Signin Portal for ArcGIS", "Please enter " + formaData[i].name, "danger");
+                            $('#LoginforPortal').removeClass('disabled');
+                            IsDetailsEntered = true;
+                            break;
+                        }
+                    }
+                    if (IsDetailsEntered) {
+                        return
+                    }
+                }
+                else {
+                    if (portalurl == "") {
+                        AlertMessages("Signin Portal for ArcGIS", "Please enter portal url ", "danger");
+                        $('#LoginforPortal').removeClass('disabled');
+                        return;
+                    }
+                    var hostname = portalurl.split('/');
+                    var domain = "";
+                    if (hostname.length > 0) {
+                        domain = hostname[0] + "//" + hostname[2];
+                        esriConfig.request.trustedServers.push(domain);
+                    }
+                }
+                var options = {
+
+                    client: 'referer',
+                    referer: Config.referer,
+                    expiration: '360',
+                    username: (LoginMode == "Direct Login") ? username : "",
+                    password: (LoginMode == "Direct Login") ? password : "",
+                    f: 'json',
+                    responseType: "json",
+                    method: "post"
+
+                };
+
+                $.ajax({
+                    url: portalurl + "/sharing/rest/generateToken",
+                    type: "POST",
+                    crossDomain: true,
+                    cors: true,
+                    secure: true,
+                    xhrFields: {
+                        withCredentials: (LoginMode == "Direct Login") ? false : true
+                    },
+
+                    data: options,
+                    success: function (response) {
+
+
+
+                        if (LoginMode != "Direct Login") {
+                            var response = (typeof (response) == "string") ? JSON.parse(response) : response;
+                            if (typeof (response.error) != "undefined") {
+                                AlertMessages(LoginMode, response.error.message + "(portal is not configured for PKI or IWA login)", "danger");
+                                $('#LoginforPortal').removeClass('disabled');
+                                return;
+                            }
+                        }
+                        var res = response;
+                        if (typeof (res) == "string")
+                            res = JSON.parse(res);
+
+                        if (typeof(res.error) != "undefined") {
+                            AlertMessages("signin PortalforArcgis", res.error.message + res.error.details.join(","), "danger");
+                            $('#LoginforPortal').removeClass('disabled');
+                            return;
+                        }
+
+                        let portal = new Portal({
+                            url: portalurl
+                        });
+                        if (LoginMode == "Direct Login") {
+                            portal.load().then(function (portalObj) {
+                                AlertMessages("Signin Portal for ArcGIS", "Successfully signedin", "success");
+                                var portalObj = {
+                                    token: (typeof (response) == "string") ? JSON.parse(response).token : response.token,
+                                    type: "PortalforArcgis",
+                                    portalurl: portalurl,
+                                    username: username,
+                                    portalid: portalObj.id,
+                                    hostName: domain,
+                                    PKIandIWFLogin: false
+                                }
+                                var options = {
+                                    userName: username,
+                                    portalUrl: portalurl,
+                                    appType: "PortalforArcgis"
+                                }
+                                InsertUserData(options)
+                                var queryParams = {
+                                    token: response.token,
+                                    f: "json"
+                                };
+                                var options = {
+                                    query: queryParams,
+                                    responseType: "json"
+                                };
+                                if (portalObj.id == undefined || portalObj.id == null) { // execute if portal id is undefined in above request
+                                    esriRequest(portalurl + "/sharing/rest/portals/self", options)
+                                        .then(function (response) {
+                                            portalObj.portalid = (typeof (response.data.user) != "undefined") ? response.data.user.orgId : response.data.id;
+                                            sessionStorage.setItem("Accesskey", JSON.stringify(portalObj));
+                                            window.location.href = "../views/Dashboard.html";
+
+                                        }).catch(function (err) {
+                                            console.log(err);
+                                            AlertMessages("signin PortalforArcgis", "Failed", "danger");
+                                            $('#LoginforPortal').removeClass('disabled');
+                                        });
+                                }
+                                else {
+                                    sessionStorage.setItem("Accesskey", JSON.stringify(portalObj));
+                                    window.location.href = "../views/Dashboard.html";
+                                }
+                            });
+                        }
+                        else {
+                            AlertMessages("Signin Portal for ArcGIS", "Successfully signedin", "success");
+                            var portaltoken = response.token;
+                            var options = {
+                                token: portaltoken,
+                                f: 'json',
+                                responseType: "json"
+                            };
+
+                            $.ajax({
+                                url: portalurl + "/sharing/rest/portals/self",
+                                type: "GET",
+                                crossDomain: true,
+                                cors: true,
+                                secure: true,
+                                xhrFields: {
+                                    withCredentials: true
+                                },
+                                data: options,
+                                success: function (response) {
+                                    var portalObj = {
+                                        token: portaltoken,
+                                        type: "PortalforArcgis",
+                                        portalurl: portalurl,
+                                        username: response.user.username,
+                                        portalid: response.id,
+                                        hostName: domain,
+                                        PKIandIWFLogin: true
+
+                                    }
+                                    var options = {
+                                        userName: response.user.username,
+                                        portalUrl: portalurl,
+                                        appType: "PortalforArcgis"
+                                    }
+                                    InsertUserData(options);
+                                    sessionStorage.setItem("Accesskey", JSON.stringify(portalObj));
+                                    window.location.href = "../views/Dashboard.html";
+
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                    $('#LoginforPortal').removeClass('disabled');
+                                    AlertMessages("signin PortalforArcgis", "Failed", "danger");
+                                }
+                            });
+                        }
+
+                    },
+                    error: function (err) {
+                        //if (err.message != "Failed to fetch") {
+                        //    var msg = err.message + err.details.messages
+                        //}
+                        //else {
+                        //    var msg = err.message;
+                        //}
+                        AlertMessages("signin PortalforArcgis", "Failed to signin", "danger");
+                        $('#LoginforPortal').removeClass('disabled');
+                       // console.log(err);
+                        return;
+                    }
+                });
+            }
+
+            setTimeout(function () {
+                $("#sign-in1").click(function (e) {
+                    e.preventDefault();
+                    portaltype = "PortalforArcgis";
+                    $("#PortalLoginForm").show();
+                });
+                $("#sign-in").click(function (e) {
+                    e.preventDefault();
+                    portaltype = "Arcgisonline";
+                    esriId.getCredential(info.portalUrl + "/sharing")
+                });
+
+            }, 2000);
+
+            function InsertUserData(options1) {
+                var url1 = WebserviceUrl + "LogUserInfo";
+                try {
+                    $.ajax({
+                        type: "POST",
+                        url: url1,
+                        crossDomain: true,
+                        data: JSON.stringify(options1),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (r) {
+                            console.log(r.d);
+                        },
+                        error: function (r) {
+                            console.log(r.responseText);
+                        },
+                        failure: function (r) {
+                            console.log(r.responseText);
+                        }
+                    });
+                }
+                catch (e) {
+                    console.log(e);
+                }
+
+            }
+        });
+    </script>
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YV23KEESC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3YV23KEESC');
+    </script>
+
+</body>
+</html>

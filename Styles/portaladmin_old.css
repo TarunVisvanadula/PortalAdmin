@@ -1,0 +1,117 @@
+﻿body {
+}
+
+.ui-jqgrid {
+    font-family: Arial;
+}
+
+    .ui-jqgrid > .ui-jqgrid-view {
+        font-size: 12px;
+    }
+
+    .ui-jqgrid .ui-jqgrid-hdiv .ui-jqgrid-labels .ui-th-column {
+        color: blue;
+    }
+
+
+    .ui-jqgrid > .ui-jqgrid-view input,
+    .ui-jqgrid > .ui-jqgrid-view select,
+    .ui-jqgrid > .ui-jqgrid-view textarea,
+    .ui-jqgrid > .ui-jqgrid-view button {
+        font-size: 12px;
+    }
+
+#grdUsers {
+    font-family: 'Times New Roman';
+    font-size: 16px;
+}
+
+.ui-jqgrid-title {
+    font-family: 'Times New Roman';
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+
+
+
+/*/*.ui-datepicker {
+    background: #FFF;
+    padding: 5px;
+    border: 1px solid #DDD;
+    width: 200px;
+}
+
+.ui-datepicker-calendar {
+    width: 100%;
+}
+
+.ui-datepicker-title {
+    text-align: center;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    background: #DDD;
+    margin: 5px 0;
+}
+
+.ui-datepicker-next {
+    position: relative;
+    float: right;
+}*/
+/*.ui-jqgrid.ui-widget.ui-widget-content {
+    width: 80% !important;
+}
+.ui-jqgrid-view {
+    width: 100% !important;
+}
+.ui-jqgrid-pager{
+    width:100% !important;
+}
+.ui-jqgrid .ui-jqgrid-hdiv, .ui-jqgrid .ui-jqgrid-bdiv {
+    width: 100% !important;
+}*/
+/*.ui-dialog.ui-widget.ui-widget-content {
+    width: 36% !important;
+}
+
+.ui-multiselect div.selected, .ui-multiselect div.available {
+    width: 50% !important;
+}
+*/
+.ui-button-text-only .ui-button-text {
+    padding: .2em 1em;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    color: #000;
+}
+.ui-dialog.ui-widget.ui-widget-content{
+    width:480px;
+}
+.ui-multiselect div.selected {
+    width: 213px !important;
+}
+.ui-multiselect div.available{
+    width:218px !important
+}
+.ui-multiselect {
+    width: 433px !important;
+}
+
+
+/*border css*/
+.ui-jqgrid-bdiv {
+    overflow: auto !important;
+}
+
+.ui-jqgrid .ui-jqgrid-pager,
+.ui-jqgrid .ui-jqgrid-hdiv,
+.ui-jqgrid .ui-jqgrid-bdiv {
+    border-right: 1px solid #c5dbec !important;
+}
+
+.ui-dialog.ui-widget.ui-widget-content {
+    transition: all 0s !important;
+}
+

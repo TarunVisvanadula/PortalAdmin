@@ -1,0 +1,970 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Drift - A fully responsive, HTML5 based admin template">
+    <meta name="keywords" content="Responsive, HTML5, admin theme, business, professional, jQuery, web design, CSS3, sass">
+    <!-- /meta tags -->
+    <title>Portal Admin</title>
+
+    <link rel="shortcut icon" href="../scripts/libs/CustomTheme/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- /site favicon -->
+    <!-- Font Icon Styles -->
+    <link href="../scripts/libs/CustomTheme/assets/fonts/noir-pro/styles.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/vendor/gaxon-icon/styles.css" rel="stylesheet" />
+    <!-- /font icon Styles -->
+    <!-- Perfect Scrollbar stylesheet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <!-- /perfect scrollbar stylesheet -->
+    <link href="../scripts/libs/CustomTheme/assets/css/default/theme-semidark.min.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/css/default/portal-admin-styles.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+    <!--multiselect dropdown-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css">
+
+
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css" />
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
+    <link href="../Styles/PortalAdmin_driftTheme.css" rel="stylesheet" />
+   
+    <script>
+        var rtlEnable = '';
+        var $mediaUrl = '';
+        var $baseUrl = '../';
+        var current_path = window.location.href.split('/').pop();
+        if (current_path == '') {
+            current_path = 'index.html';
+        }
+    </script>
+
+    <script src="../scripts/libs/CustomTheme/plugins/jquery/js/jquery.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/moment/js/moment.min.js"></script>
+    <!--<script src="../scripts/libs/CustomTheme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+    <!-- Perfect Scrollbar jQuery -->
+    <script src="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+    <!-- /perfect scrollbar jQuery -->
+
+</head>
+<body class="dt-layout--default dt-sidebar--fixed dt-header--fixed clone-Items_body">
+    <div class="modal fade" id="Folder-modal" tabindex="-1" role="dialog"
+         aria-labelledby="model-1"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <!-- Modal Content -->
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title" id="model-1">Create Folder in Destination portal</h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="foldername" class="col-form-label">Folde Name:</label>
+                            <input class="form-control" id="foldername"
+                                   type="text">
+                        </div>
+
+                    </form>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm"
+                            data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm saveFolder">
+                        Create
+                    </button>
+                </div>
+                <!-- /modal footer -->
+
+            </div>
+            <!-- /modal content -->
+
+        </div>
+    </div>
+    <div class="modal fade" id="PortalLoginForm" tabindex="-1" role="dialog"
+         aria-labelledby="model-8"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <!-- Modal Content -->
+            <div class="modal-content" style="overflow-y:hidden !important">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title" id="model-8">
+                        Sign in Portal for Arcgis
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- /modal header -->
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="portalurl" class="col-form-label">Enter Portal URL</label>
+                            <input class="form-control form-control-sm " id="portalurl" name="Portal url"
+                                   type="text">
+                        </div>
+                        <div class="dt-card__body1 tabs-container">
+
+                            <!-- Tab Navigation -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="LoginMode1" data-toggle="tab" href="#DirectLogin" role="tab" aria-controls="directLogin" aria-selected="true">Direct Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="LoginMode2" data-toggle="tab" href="#OAuthLogin" role="tab" aria-controls="oAuth" aria-selected="true">OAuth Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="LoginMode3" data-toggle="tab" href="#PkiLogin" role="tab" aria-controls="pkilogin" aria-selected="true">PKI or IWA  Login</a>
+                                </li>
+                            </ul>
+                            <!-- /tab navigation -->
+                            <!-- Tab Content -->
+                            <div class="tab-content">
+
+                                <!-- Tab Pane -->
+                                <div id="DirectLogin" class="tab-pane active">
+                                    <div class="card-body" style="padding:1rem !important">
+                                        <div class="form-group">
+                                            <label for="defaultForm-username" class="col-form-label">Enter Username</label>
+                                            <input class="form-control  form-control-sm " id="defaultForm-username" name="Username"
+                                                   type="text">
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="defaultForm-password" class="col-form-label">Enter Password</label>
+                                            <input class="form-control aut  form-control-sm " id="defaultForm-password" name="Password"
+                                                   type="password">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /tab pane-->
+                                <!-- Tab Pane -->
+                                <div id="OAuthLogin" class="tab-pane">
+                                    <div class="card-body" style="padding:1rem !important">
+                                        <div class="form-group">
+                                            <label for="appid" class="col-form-label">App ID</label>
+                                            <input class="form-control form-control-sm" id="appid" name="appid"
+                                                   type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <h6 style="line-height: 1.6;">Note: In order to log in to a Portal for ArcGIS instance using a SAML-based Identity Provider, you will need to Register Portal Admin as an application in your Portal, to generate an AppID that can identify this app as an allowed client of the Portal. To do so, follow the instructions <a href="http://server.arcgis.com/en/portal/latest/administer/linux/add-items.htm#ESRI_SECTION1_0D1B620254F745AE84F394289F8AF44B" style="text-decoration:underline" target="_blank">here</a> , using Application as the Type of App and https://aiapps.smartgeoapps.com/ as the Redirect URI.</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /tab pane-->
+                                <div id="PkiLogin" class="tab-pane">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <h6 style="line-height:1.6">Note: This login method is used for Portals with web-tier authentication, using username and password or client certificate (PKI) authentication methods, often referred to as “SSO” or Single Sign On). This authentication method is most often used for internal-facing Portals inside of an intranet. <a href="http://server.arcgis.com/en/portal/latest/administer/windows/use-integrated-windows-authentication-with-your-portal.htm" target="_blank" style="text-decoration:underline">More info</a></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tab content -->
+
+                        </div>
+
+
+                    </form>
+                </div>
+
+
+
+
+                <!-- /modal body -->
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm close_modal"
+                            data-dismiss="modal">
+                        CLOSE
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" id="LoginforPortal">
+                        LOGIN
+                    </button>
+                </div>
+                <!-- /modal footer -->
+
+            </div>
+            <!-- /modal content -->
+
+        </div>
+    </div>
+    <!-- Loader -->
+    <div class="dt-loader-container">
+        <div class="dt-loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+            </svg>
+        </div>
+    </div>
+    <!-- /loader -->
+    <!-- Root -->
+    <div class="dt-root">
+        <div class="dt-root__inner">
+            <!-- Header -->
+            <header class="dt-header">
+
+                <div header-include-html="Header.html"></div>
+
+            </header>
+            <!-- /header -->
+            <!-- Site Main -->
+            <main class="dt-main">
+                <!-- Sidebar -->
+                <aside id="main-sidebar" class="dt-sidebar">
+                    <div menu-include-html="Menu.html"></div>
+                </aside>
+
+                <!-- /sidebar -->
+                <!-- Site Content Wrapper -->
+                <div class="dt-content-wrapper">
+
+                    <!-- Site Content -->
+                    <div class="dt-content">
+                        <!-- Page Header -->
+                        <!--<div class="dt-page__header">
+                            <h1 class="dt-page__title">Copy Items to Organization</h1>
+                        </div>-->
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item breadcrumb_Home" style="font-weight:600"><a href="javascript:void(0)">Copy Items to Organization</a></li>
+                            <!--<li class="active breadcrumb-item">Library</li>-->
+                        </ol>
+                        <!-- /page header -->
+                        <!-- Grid -->
+                        <div class="row">
+                            <div class="col-12 order-xl-12">
+
+                                <!-- Card -->
+                                <!-- Edit User -->
+                                <!-- Export Users-->
+                                <div class="dt-card" id="Wizard_cloneItems">
+                                    <div class="dt-card__body" style="padding-bottom:0px">
+                                        <div class="container-fluid">
+                                            <div class="row justify-content-center">
+                                                <div class="col-11 col-sm-9 col-md-12 col-lg-6 col-xl-12 text-center p-0 ">
+                                                    <div class="Stepscard px-0 pt-4 pb-0 ">
+                                                        <form id="msform">
+                                                            <!-- progressbar -->
+                                                            <ul id="progressbar">
+                                                                <li class="FourItems active" id="SelectItems"><strong>Select Items</strong></li>
+                                                                <li class="FourItems" id="SignIn"><strong>Sign In</strong></li>
+                                                                <li class="FourItems" id="ServiceUpdation"><strong>Service Management</strong></li>
+                                                                <li class="FourItems" id="Migrate"><strong>Migrate</strong></li>
+                                                                <li class="FourItems" style="display:none" id="Finish"><strong>Finish</strong></li>
+                                                            </ul>
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div>
+                                                            <br>
+                                                            <!-- fieldsets -->
+                                                            <fieldset>
+                                                                <div class="form-card">
+                                                                    <div class="row">
+                                                                        <div class="col-7">
+                                                                            <h5 class="" style="color:#673AB7">Note: Story maps migration is not supported in this version.</h5>
+                                                                        </div>
+                                                                        <div class="col-5" style="display:none">
+                                                                            <h2 class="steps">Step 1 - 5</h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="row col-md-12 text-left">
+                                                                            <div class="col-md-1 col-form-label text-sm-left pageSize_label" for="email-2">Page Size</div>
+                                                                            <div class="col-md-1 col-9">
+                                                                                <select class="custom-select custom-select-sm" id="pageSize" style="width:78px">
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="10">10</option>
+                                                                                    <option value="30" selected="selected">30</option>
+                                                                                    <option value="50">50</option>
+                                                                                    <option value="100">100</option>
+                                                                                </select>
+
+                                                                            </div>
+
+                                                                            <div class="col-md-3">
+                                                                                <select class="custom-select custom-select-sm" id="folderdiv"></select>
+                                                                                <!--<div class="col-md-12 text-left">
+                                                                                    <div class="col-md-1 col-form-label text-sm-left" for="email-21">Folders</div>
+                                                                                    <div class="col-md-2 col-9">
+
+                                                                                    </div>
+                                                                                </div>-->
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <input class="ml-5 form-control form-control-sm" type="text" placeholder="search by title/type/owner/access" title="search by title/type/owner/access" id="search">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <hr class="mb-0 pb-0">
+                                                                    <div style="display:none"><input type="checkbox" class="allowContentupdation" name="modify services" /><label style="font-weight:bold">Allow Updating Webmap services</label></div>
+                                                                    <div class="">
+                                                                        <div id="sourceItems"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="button" name="next" class="next action-button first-next" value="Next" />
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <div class="form-card">
+                                                                    <div class="row" style="display:none">
+                                                                        <div class="col-7">
+                                                                            <h2 class="fs-title">Sign In Destination Portal</h2>
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <h2 class="steps">Step 2 - 3</h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-card">
+                                                                                <p>Migrating selected items from source portal to destination portal</p>
+                                                                                <button type="button" id="Targetarcgisonline" class="btn btn-secondary">Signin Arcgis Online</button>
+                                                                                <button type="button" data-toggle="modal" data-target="" id="Targetportal" class="btn btn-secondary">Signin Portal for Arcgis</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr class="mt-10 pb-0">
+                                                                </div>
+                                                                <input type="button" name="next" class="next action-button" id="login-done" style="display:none" value="Next" />
+                                                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <div class="form-card">
+                                                                    <div class="row" style="display:none">
+                                                                        <div class="col-7">
+                                                                            <h3 class="fs-title">Manage WebMap Services</h3>
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <h2 class="steps">Step 3 - 4</h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div id="items-control" style="width:100% !important" class="pl-5 pr-4"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="button" name="next" class="next action-button getselectedItem" id="manage-service" value="Next" />
+                                                                <input type="button" name="previous" class="previous action-button-previous manage-previous" value="Previous" />
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <div class="form-card">
+                                                                    <div class="row">
+                                                                        <div id="manageduplicates" class="form-card" style="display:none">
+                                                                            <div id="groups-update">
+                                                                            </div>
+                                                                            <p><strong></strong></p><br />
+                                                                            <div class="row">
+                                                                                <button type="button" id="update-items" class="btn btn-primary btn-sm" style="margin-right:16px">Do you want to override existing</button>
+                                                                                <button type="button" id="no-update-req" class="btn btn-secondary btn-sm">Skip copying existing items</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row" style="display:none">
+                                                                        <div class="col-7">
+                                                                            <h2 class="fs-title">Selected Information:</h2>
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <h2 class="steps">Step 4 - 5</h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <h3 style="color:#52c41a" class="response-msg text-center"></h3>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 text-right pr-0 mb-2">
+
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 order-xl-8 pl-0">
+
+                                                                            <!-- Card -->
+                                                                            <div class="dt-card dt-card__full-height pb-4">
+
+                                                                                <!-- Card Header -->
+                                                                                <div class="dt-card__header bg-primary mb-3 py-3">
+
+                                                                                    <!-- Card Heading -->
+                                                                                    <div class="dt-card__heading d-flex">
+                                                                                        <h3 class="dt-card__title text-white mr-2">Selected Items</h3>
+                                                                                        <div class="badge badge-light display-3 itemCount">4</div>
+                                                                                    </div>
+                                                                                    <!-- /card heading -->
+                                                                                    <!-- Card Tools -->
+                                                                                    <div class="dt-card__tools d-flex">
+                                                                                        <select class="custom-select custom-select-sm folder_target"><option value="">Choose folder</option></select>&nbsp;
+                                                                                        <button class="btn-success btn-sm btn createFolder_target" data-toggle="modal" data-target="#Folder-modal" style="white-space:nowrap">Create Folder</button>
+                                                                                    </div>
+                                                                                    <!-- /card tools -->
+
+                                                                                </div>
+                                                                                <!-- /card header -->
+                                                                                <!-- Card Body -->
+                                                                                <div class="dt-card__body p-0 max-h-200 ps-custom-scrollbar">
+                                                                                    <!-- Widget -->
+                                                                                    <div class="dt-widget dt-widget-hover" id="sel_items">
+
+                                                                                    </div>
+                                                                                    <!-- /widget -->
+                                                                                </div>
+                                                                                <!-- /card body -->
+
+                                                                            </div>
+                                                                            <!-- /card -->
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row Updated_content" style="display:none">
+                                                                        <div class=" mt-4">Updated Services Content</div>
+                                                                        <hr class="border-dashed mb-5 mt-1" />
+                                                                        <!--<div class="Updated_content" style="display:none">-->
+                                                                        <!--<h4>Updated services</h4>
+                                                                        <div class="form-card">
+                                                                            <h5 class="fs-title">Source Items</h5>
+                                                                            <ul class="list-group" id="source_webmap"></ul>
+                                                                        </div>
+                                                                        <div class="form-card">
+                                                                            <h5 class="fs-title">Modified Items</h5>
+                                                                            <ul class="list-group" id="Modified-webmaps"></ul>
+                                                                        </div>-->
+                                                                        <!--</div>-->
+                                                                        <div class="col-md-12">
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-6 order-xl-8 pl-0">
+
+                                                                                    <!-- Card -->
+                                                                                    <div class="dt-card dt-card__full-height pb-4">
+
+                                                                                        <!-- Card Header -->
+                                                                                        <div class="dt-card__header bg-primary mb-3 py-3">
+
+                                                                                            <!-- Card Heading -->
+                                                                                            <div class="dt-card__heading">
+                                                                                                <h3 class="dt-card__title text-white">Source Services</h3>
+                                                                                            </div>
+                                                                                            <!-- /card heading -->
+                                                                                            <!-- Card Tools -->
+                                                                                            <div class="dt-card__tools" style="display:none">
+                                                                                                <div class="badge badge-light display-3 itemCount">4</div>
+                                                                                            </div>
+                                                                                            <!-- /card tools -->
+
+                                                                                        </div>
+                                                                                        <!-- /card header -->
+                                                                                        <!-- Card Body -->
+                                                                                        <div class="dt-card__body p-0 max-h-200 ps-custom-scrollbar">
+                                                                                            <!-- Widget -->
+                                                                                            <div class="dt-widget dt-widget-hover" id="source_webmap">
+
+                                                                                            </div>
+                                                                                            <!-- /widget -->
+                                                                                        </div>
+                                                                                        <!-- /card body -->
+
+                                                                                    </div>
+                                                                                    <!-- /card -->
+
+                                                                                </div>
+                                                                                <div class="col-md-6 order-xl-8 pl-0">
+
+                                                                                    <!-- Card -->
+                                                                                    <div class="dt-card dt-card__full-height pb-4">
+
+                                                                                        <!-- Card Header -->
+                                                                                        <div class="dt-card__header bg-primary mb-3 py-3">
+
+                                                                                            <!-- Card Heading -->
+                                                                                            <div class="dt-card__heading">
+                                                                                                <h3 class="dt-card__title text-white">Modified service</h3>
+                                                                                            </div>
+                                                                                            <!-- /card heading -->
+                                                                                            <!-- Card Tools -->
+                                                                                            <div class="dt-card__tools" style="display:none">
+                                                                                                <div class="badge badge-light display-3 itemCount">4</div>
+                                                                                            </div>
+                                                                                            <!-- /card tools -->
+
+                                                                                        </div>
+                                                                                        <!-- /card header -->
+                                                                                        <!-- Card Body -->
+                                                                                        <div class="dt-card__body p-0 max-h-200 ps-custom-scrollbar">
+                                                                                            <!-- Widget -->
+                                                                                            <div class="dt-widget dt-widget-hover" id="Modified-webmaps">
+
+                                                                                            </div>
+                                                                                            <!-- /widget -->
+                                                                                        </div>
+                                                                                        <!-- /card body -->
+
+                                                                                    </div>
+                                                                                    <!-- /card -->
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <input type="button" name="next" id="items-migrate-btn" class="action-button lst-Actions" value="Confirm" />
+                                                                <input type="button" name="previous" class="previous action-button-previous mig-previous lst-Actions" value="Previous" />
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <div class="form-card">
+                                                                    <div class="row" style="display:none">
+                                                                        <div class="col-7">
+                                                                            <h2 class="fs-title">Finish:</h2>
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <h2 class="steps">Step 5 - 5</h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <br>
+
+                                                                    <div id="loader" class="spinner-border text-primary" style="width: 3rem; height: 3rem;margin-left:50%" role="status">
+                                                                        <span class="sr-only">Loading...</span>
+                                                                    </div>
+                                                                    <br />
+                                                                    <div class="PText"><ul class="progressText"></ul></div><br />
+                                                                    <div id="manageduplicates1" class="form-card" style="display:none">
+                                                                        <div id="groups-update">
+                                                                        </div>
+                                                                        <p><strong></strong></p><br />
+                                                                        <div class="row">
+                                                                            <button type="button" id="update-items" class="btn btn-primary btn-sm" style="margin-right:16px">Do you want to override existing</button>
+                                                                            <button type="button" id="no-update-req" class="btn btn-secondary btn-sm">Skip copying existing items</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="migrate-success" class="form-card" style="display:none">
+                                                                        <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                                                                        </div> <br><br>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-7 text-center">
+                                                                                <h5 class="purple-text text-center success_msg">Successfully Copied Items</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="migrate-fail" class="form-card" style="display:none">
+                                                                        <h2 class="purple-text text-center"><strong>Failed !</strong></h2> <br>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-7 text-center">
+                                                                                <h3 style="color:red" class="text-center failure_msg">Failed to Copy Items</h3>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-3"> <img src="../Images/Failure.png" class="fit-image"> </div>
+                                                                        </div> <br><br>
+
+                                                                    </div>
+                                                                </div>
+                                                                <input type="button" id="ReturnHome" name="next" class="action-button" value="Home" />
+                                                            </fieldset>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /card -->
+
+                            </div>
+                        </div>
+                        <!-- /grid -->
+                        <!-- Grid -->
+                        <!-- /grid -->
+                        <!-- Grid -->
+                        <!-- /grid -->
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="dt-footer"> © 2020  <a href="https://www.ispatialtec.com/" class="ml-2">  iSpatial Techno Solutions</a>, All Rights Reserved </footer>
+                    <!-- /footer -->
+                </div>
+                <!-- /site content wrapper -->
+                <!-- Theme Chooser -->
+                <!--<div class="dt-customizer-toggle">
+                  <a href="javascript:void(0)" data-toggle="customizer"> <i class="icon icon-customizer animation-customizer"></i> </a>
+                </div>-->
+                <!-- /theme chooser -->
+                <!-- Customizer Sidebar -->
+                <aside class="dt-customizer dt-drawer position-right">
+                    <div class="dt-customizer__inner">
+
+                        <!-- Customizer Header -->
+                        <div class="dt-customizer__header">
+
+                            <!-- Customizer Title -->
+                            <div class="dt-customizer__title">
+                                <h3 class="mb-0">Theme Settings</h3>
+                            </div>
+                            <!-- /customizer title -->
+                            <!-- Close Button -->
+                            <button type="button" class="close" data-toggle="customizer"> <span aria-hidden="true">&times;</span> </button>
+                            <!-- /close button -->
+
+                        </div>
+                        <!-- /customizer header -->
+                        <!-- Customizer Body -->
+                        <div class="dt-customizer__body ps-custom-scrollbar">
+                            <!-- Customizer Body Inner  -->
+                            <div class="dt-customizer__body-inner">
+
+                                <!-- Section -->
+                                <section>
+                                    <h4>Theme</h4>
+
+                                    <!-- List -->
+                                    <ul class="dt-list dt-list-sm" id="theme-chooser">
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" data-theme="light"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/theme-light.png" alt="Light"> </a> <span class="choose-option__name">Light</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" data-theme="semidark"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/theme-normal.png" alt="Normal"> </a> <span class="choose-option__name">Semi-dark</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" data-theme="dark"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/theme-dark.png" alt="Dark"> </a> <span class="choose-option__name">Dark</span> </div>
+                                        </li>
+                                    </ul>
+                                    <!-- /list -->
+
+                                </section>
+                                <!-- /section -->
+                                <!-- Section -->
+                                <section>
+                                    <h4>Style</h4>
+
+                                    <!-- List -->
+                                    <ul class="dt-list dt-list-sm">
+                                        <li class="dt-list__item d-none d-lg-block">
+                                            <div class="choose-option"> <a href="javascript:void(0)" id="toggle-fixed-sidebar" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/fix-sidebar.png" alt="Fix Sidebar"> </a> <span class="choose-option__name">Fix Sidebar</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" id="toggle-fixed-header" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/fix-header.png" alt="Fix Header"> </a> <span class="choose-option__name">Fix Header</span> </div>
+                                        </li>
+                                    </ul>
+                                    <!-- /list -->
+
+                                </section>
+                                <!-- /section -->
+                                <!-- Section -->
+                                <section id="theme-style-chooser">
+                                    <h4>Color</h4>
+
+                                    <!-- List -->
+                                    <ul class="dt-list dt-list-sm dt-color-options">
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style=""></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-2"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-3"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-4"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-5"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-6"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-7"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-8"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-9"></span> </li>
+                                        <li class="dt-list__item"> <span class="dt-color-option" data-style="style-10"></span> </li>
+                                    </ul>
+                                    <!-- /list -->
+
+                                </section>
+                                <!-- /section -->
+                                <!-- Section -->
+                                <section class="d-none d-lg-block" id="sidebar-layout">
+                                    <h4>Sidebar Layout</h4>
+
+                                    <!-- List -->
+                                    <ul class="dt-list dt-list-sm">
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" id="sl-option1" data-value="folded"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/folded.png" alt="Folded"> </a> <span class="choose-option__name">Folded</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" id="sl-option2" data-value="default"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/default.png" alt="Default"> </a> <span class="choose-option__name">Default</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" id="sl-option3" data-value="drawer"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/drawer.png" alt="Drawer"> </a> <span class="choose-option__name">Drawer</span> </div>
+                                        </li>
+                                    </ul>
+                                    <!-- /list -->
+
+                                </section>
+                                <!-- /section -->
+                                <!-- Section -->
+                                <section class="d-none d-lg-block" id="layout-chooser">
+                                    <h4>Layout</h4>
+
+                                    <!-- List -->
+                                    <ul class="dt-list dt-list-sm">
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" data-layout="framed"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/framed.png" alt="Framed"> </a> <span class="choose-option__name">Framed</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" data-layout="full-width"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/full-width.png" alt="Full Width"> </a> <span class="choose-option__name">Full Width</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="javascript:void(0)" class="choose-option__icon" data-layout="boxed"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/boxed.png" alt="Boxed"> </a> <span class="choose-option__name">Boxed</span> </div>
+                                        </li>
+                                    </ul>
+                                    <!-- /list -->
+
+                                </section>
+                                <!-- /section -->
+                                <!-- Section -->
+                                <section>
+                                    <h4>Nav Style</h4>
+
+                                    <!-- List -->
+                                    <ul class="dt-list">
+                                        <li class="dt-list__item">
+                                            <div class="choose-option active"> <a href="http://drift-admin.g-axon.work/default" target="_blank" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-default.png" alt="Layout Default"> </a> <span class="choose-option__name">Default</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="http://drift-admin.g-axon.work/saas" target="_blank" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-saas.png" alt="Layout SAAS"> </a> <span class="choose-option__name">SAAS Layout</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="http://drift-admin.g-axon.work/listing" target="_blank" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-listing.png" alt="Layout listing"> </a> <span class="choose-option__name">Listing</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="http://drift-admin.g-axon.work/intranet" target="_blank" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-intranet.png" alt="Layout Intranet"> </a> <span class="choose-option__name">Intranet</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="http://drift-admin.g-axon.work/back-office" target="_blank" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-back-office.png" alt="Layout Back Office"> </a> <span class="choose-option__name">Back Office</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option">
+                                                <a href="http://drift-admin.g-axon.work/back-office-mini" target="_blank" class="choose-option__icon">
+                                                    <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-back-office-mini.png"
+                                                         alt="Layout Back Office Minimal">
+                                                </a> <span class="choose-option__name">Back Office Minimal</span>
+                                            </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="http://drift-admin.g-axon.work/modern" target="_blank" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-modern.png" alt="Layout Modern"> </a> <span class="choose-option__name">Modern</span> </div>
+                                        </li>
+                                        <li class="dt-list__item">
+                                            <div class="choose-option"> <a href="http://drift-admin.g-axon.work/crm" target="_blank" class="choose-option__icon"> <img src="../scripts/libs/CustomTheme/assets/images/customizer-icons/layout-crm.png" alt="Layout CRM"> </a> <span class="choose-option__name">CRM</span> </div>
+                                        </li>
+                                    </ul>
+                                    <!-- /list -->
+
+                                </section>
+                                <!-- /section -->
+                                <!-- Section -->
+                                <section class="d-lg-block">
+                                    <h4>RTL Version</h4>
+                                    <a class="btn btn-primary mb-2 btn-block" href="http://drift-admin-rtl.g-axon.work/default"><i class="icon-open-new-tab"></i> Try RTL Demo</a>
+                                </section>
+                                <!-- /section -->
+
+                            </div>
+                            <!-- /customizer body inner -->
+                        </div>
+                        <!-- /customizer body -->
+
+                    </div>
+                </aside>
+                <!-- /customizer sidebar -->
+            </main>
+        </div>
+    </div>
+    <!-- /root -->
+    <!-- Contact User Information -->
+    <div class="card user-info-card">
+        <div class="p-4">
+            <div class="dt-avatar-wrapper mb-3">
+                <img style="display: none" class="dt-avatar size-50 profile-pic"
+                     src="https://via.placeholder.com/150x150" alt="Domnic Harris"> <span style="display: none"
+                                                                                          class="dt-avatar size-50 bg-orange text-white text-uppercase profile-placeholder">pp</span>
+                <div class="dt-avatar-info"> <span class="dt-avatar-name h4 mb-1">Domnic Harris</span> <span class="dt-avatar-desc f-12">dom.harris@gmail.com</span> </div>
+            </div>
+            <div class="mb-1"> <i class="icon icon-maps icon-fw mr-1"></i> <span class="f-12">Palo Alto, CA, United States</span> </div>
+            <div> <i class="icon icon-contacts icon-fw mr-1"></i> <span class="f-12">20+ Mutual Connections</span> </div>
+        </div>
+        <div class="px-4 py-2 border-top d-flex justify-content-between">
+            <a href="javascript:void(0)" class="card-link">Add to Contacts</a>
+            <div class="ml-2 ml-sm-10"> <a class="mr-1" href="javascript:void(0)"><i class="icon icon-mail icon-fw icon-xl"></i></a> <a class="mr-1" href="javascript:void(0)"><i class="icon icon-tag-o icon-fw icon-xl"></i></a> <a href="javascript:void(0)"><i class="icon icon-chat-app icon-fw icon-xl"></i></a> </div>
+        </div>
+    </div>
+    <!-- /contact user information --> <!-- masonry script -->
+    <script src="../scripts/libs/CustomTheme/plugins/masonry-layout/js/masonry.pkgd.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/sweetalert2/js/sweetalert2.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/functions.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/customizer.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/script.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/gmaps/js/gmaps.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/chart.js/js/Chart.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/echarts/js/echarts.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/echarts-liquidfill/js/echarts-liquidfill.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/global/charts/dashboard-real-estate.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/global/maps/gmaps.js"></script>
+
+    <link rel="stylesheet" href="https://rawgit.com/timschlechter/bootstrap-tagsinput/master/src/bootstrap-tagsinput.css">
+    <script src="https://rawgit.com/bassjobsen/Bootstrap-3-Typeahead/master/bootstrap3-typeahead.js"></script>
+
+    <script src="../scripts/PortalAdmin.Common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+    <script src="https://rawgit.com/TimSchlechter/bootstrap-tagsinput/master/src/bootstrap-tagsinput.js"></script>
+    <script src="../scripts/PortalAdminClone/CloneItems.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/sweetalert2/js/sweetalert2.js"></script>
+    <script src="../scripts/Notify.js"></script>
+    <script src="https://js.arcgis.com/4.15/"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $(".fa-sitemap").click(function () {
+                $("#GroupInfo").show();
+                $("#MainCard").hide();
+            });
+
+
+            $(".fa-pencil").click(function () {
+                $("#EditUser").show();
+                $("#MainCard").hide();
+            });
+
+            $(".close").click(function () {
+                $("#GroupInfo").hide();
+                $("#EditUser").hide();
+                $("#MainCard").show();
+
+            });
+
+
+
+            $(".btn-group, .dropdown").hover(
+                function () {
+                    $('>.dropdown-menu', this).stop(true, true).fadeIn("fast");
+                    $(this).addClass('open');
+                },
+                function () {
+                    $('>.dropdown-menu', this).stop(true, true).fadeOut("fast");
+                    $(this).removeClass('open');
+                });
+
+        });
+
+
+
+        $(document).ready(function () {
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset").length;
+
+            setProgressBar(current);
+
+            $(".next").click(function () {
+
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+            });
+
+            $(".previous").click(function () {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 500
+                });
+                setProgressBar(--current);
+            });
+
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar")
+                    .css("width", percent + "%")
+            }
+
+            $(".submit").click(function () {
+                return false;
+            })
+
+        });
+    </script>
+	 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YV23KEESC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3YV23KEESC');
+    </script>
+</body>
+</html>

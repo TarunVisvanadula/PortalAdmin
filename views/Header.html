@@ -1,0 +1,200 @@
+﻿<html>
+<head>
+    <style>
+        .modal-backdrop.show {
+            opacity: 0 !important;
+        }
+        .modal-open .modal {
+            overflow-x: hidden;
+            overflow-y: hidden!important;
+        }
+        .modal_content_form {
+            overflow-y:scroll !important;
+            height:500px!important;
+        }
+        .modal-backdrop {
+            position: relative !important;
+        }
+    </style>
+</head>
+
+<div class="dt-header__container">
+
+    <!-- Brand -->
+    <div class="dt-brand">
+
+        <!-- Brand tool -->
+        <div class="dt-brand__tool" data-toggle="main-sidebar">
+            <div class="hamburger-inner"></div>
+        </div>
+        <!-- /brand tool -->
+        <!-- Brand logo -->
+        <span class="dt-brand__logo">
+            <a class="dt-brand__logo-link" href="javascript:void(0)">
+                <img class="dt-brand__logo-img d-none img-fluid" src="../Images/logo.png" alt="Drift">
+                <img class="dt-brand__logo-symbol" src="../Images/logo.png" alt="Drift">
+            </a>
+        </span>
+        <!-- /brand logo -->
+
+    </div>
+    <!-- /brand -->
+    <!-- Header toolbar-->
+    <div class="dt-header__toolbar">
+
+        <!-- Search box -->
+        <!-- <form class="search-box d-none d-lg-block">
+           <div class="input-group">
+             <input class="form-control" placeholder="Search in app..." value="" type="search">
+             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+             <div class="input-group-append">
+               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">Category
+               </button>
+
+               <div class="dropdown-menu">
+                 <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                 <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                 <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+               </div>
+             </div>
+           </div>
+         </form>-->
+        <!-- /search box -->
+        <!-- Header Menu Wrapper -->
+        <div class="dt-nav-wrapper">
+            <!-- Header Menu -->
+            <ul class="dt-nav d-lg-none">
+                <li class="dt-nav__item dt-notification-search dropdown">
+
+                    <!-- Dropdown Link -->
+                    <a href="#" class="dt-nav__link dropdown-toggle no-arrow" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false"><i class="icon icon-search icon-fw icon-lg"></i></a>
+                    <!-- /dropdown link -->
+                    <!-- Dropdown Option -->
+                    <div class="dropdown-menu">
+
+                        <!-- Search Box -->
+                        <form class="search-box right-side-icon">
+                            <input class="form-control form-control-lg" type="search" placeholder="Search in app...">
+                            <button type="submit" class="search-icon"><i class="icon icon-search icon-lg"></i></button>
+                        </form>
+                        <!-- /search box -->
+
+                    </div>
+                    <!-- /dropdown option -->
+
+                </li>
+            </ul>
+            <!-- /header menu -->
+            <!-- Header Menu -->
+            <ul class="dt-nav">
+                <li class="dt-nav__item dt-notification-app dropdown">
+
+                    <!-- Dropdown Link -->
+                    <!-- /dropdown link -->
+                    <!-- Dropdown Option -->
+                    <div class="dropdown-menu ps-custom-scrollbar">
+
+                        <!-- Apps -->
+                        <!-- /apps -->
+
+                    </div>
+                    <!-- /dropdown option -->
+
+                </li>
+            </ul>
+            <!-- /header menu -->
+            <!-- Header Menu -->
+            <!-- /header menu -->
+            <!-- Header Menu -->
+            <!-- /header menu -->
+            <!-- Header Menu -->
+            <ul class="dt-nav mt-5">
+                <li class="dt-nav__item dropdown">
+
+                    <!-- Dropdown Link -->
+                    <a href="#" class="dt-nav__link dropdown-toggle no-arrow dt-avatar-wrapper"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: relative;left: -16px;">
+                        <!--<img class="dt-avatar size-30" src="https://via.placeholder.com/150x150" alt="Domnic Harris">-->
+                        <span class="dt-avatar-info d-none d-sm-block">
+                            <i class="fa fa-user fa-2x circle-icon"></i> <span id="user_name" class="dt-avatar-name"></span>
+                        </span>
+                    </a>
+                    <a href="javascript:void(0)" style="margin-right:12px" class="dt-nav__link dropdown-toggle no-arrow dt-avatar-wrapper"  data-toggle="modal" data-target="#SupportForm">
+                        <!--<img class="dt-avatar size-30" src="https://via.placeholder.com/150x150" alt="Domnic Harris">-->
+                        <span class="dt-avatar-info d-none d-sm-block">
+                            <i class="fa fa-envelope circle-icon"></i> <span id="user_name" class="dt-avatar-name">Contact Us</span>
+                        </span>
+                    </a>
+<a href="https://portaladmin.ispatialtec.com/" target="_blank" class="dt-nav__link dropdown-toggle no-arrow dt-avatar-wrapper">
+                        <!--<img class="dt-avatar size-30" src="https://via.placeholder.com/150x150" alt="Domnic Harris">-->
+                        <span class="dt-avatar-info d-none d-sm-block">
+                            <i class="fa fa-info circle-icon"></i> <span id="" class="dt-avatar-name">Knowledge Base</span>
+                        </span>
+                    </a>
+
+                    <!-- /dropdown link -->
+                    <!-- Dropdown Option -->
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dt-avatar-wrapper flex-nowrap p-6 mt-n2 bg-gradient-purple text-white rounded-top">
+                            <!--<img class="dt-avatar" src="https://via.placeholder.com/150x150" alt="Domnic Harris">-->
+                            <span class="dt-avatar-info">
+                                <span class="dt-avatar-name"></span>
+                                <span class="f-12 user_name1">Administrator</span>
+                            </span>
+                        </div>
+                        <a class="dropdown-item" href="javascript:void(0)">
+                            <i class="fa fa-info-circle  mr-2 mr-sm-1" aria-hidden="true"></i>Help
+                        </a>
+
+                        <a class="dropdown-item" href="javascript:void(0)">
+                            <i class="fa fa-video-camera  mr-2 mr-sm-1" aria-hidden="true"></i>Video
+                        </a>
+                        <a class="dropdown-item" href="javascript:void(0)" id="sign-out">
+                            <i class="fa fa-sign-out mr-2 mr-sm-1"></i>Logout
+                        </a>
+
+                    </div>
+                    <!-- /dropdown option -->
+
+                </li>
+
+            </ul>
+            
+            <!-- /header menu -->
+        </div>
+        <!-- Header Menu Wrapper -->
+
+    </div>
+    <!-- /header toolbar -->
+
+</div>
+<body class="dt-layout--default dt-sidebar--fixed dt-header--fixed h-100">
+    <div class="modal fade" id="SupportForm" tabindex="-1" role="dialog"
+         aria-labelledby="model-8"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content modal_content_form">
+
+                <div class="modal-header">
+                    <h3 class="modal-title" id="model-8">
+                        We are here to help .... Get in touch
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="ecubeAppsIfrm" height="900px" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none" src="https://contactusform.ecubeapps.com/SwiftForms/CreatePublic/t0YAAA"></iframe>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

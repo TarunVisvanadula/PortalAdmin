@@ -1,0 +1,50 @@
+﻿.Viewuser, .EditUser, .Usergroups {
+    text-decoration: none;
+    margin-right: 10px;
+}
+.multiselect-container > li > a > label
+{
+    white-space:nowrap!important;
+}
+/*.text-sm-left
+{
+    white-space:nowrap;
+}*/
+.multiselect-container > li > a > label {
+    padding-left:15px;
+}
+#msform .action-button-previous
+{
+    font-weight:normal!important;
+}
+#msform .action-button-next {
+    font-weight: normal!important;
+}
+#msform .action-button
+{
+    font-weight:normal!important;
+}
+.dt-widget .dt-widget__title{
+    cursor:default;
+}
+.pageSize_label{
+    white-space:nowrap;
+}
+#GroupItemList, #EditUser .dt-card__body, #EditFolder .dt-card__body,
+#EditItem .dt-card__body, #GroupInfo .dt-card__body{
+    padding: 15px;
+}
+.dt-side-nav>li{
+    cursor:pointer;
+}
+.dt-side-nav__text
+{
+    cursor:pointer
+}
+.jsgrid-header-row .jsgrid-header-cell {
+    font-weight: 500;
+}
+.ui-datepicker-next .ui-datepicker-previous {
+  /*background:  #512da8 !important*/
+  background-color:red;
+}

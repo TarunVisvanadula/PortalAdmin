@@ -1,0 +1,517 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Portal Admin</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">-->
+    <!-- Bootstrap core CSS -->
+    <!--<link href="../assets/dist/css/bootstrap.css" rel="stylesheet">-->
+    <!--jq grid styles-->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/redmond/jquery-ui.css" rel="stylesheet" />
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/css/ui.jqgrid.css" rel="stylesheet" />
+    <!--end-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="Styles/PortalAdmin.css" rel="stylesheet" />
+
+    <!--multiselect dropdown-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+
+
+    <!--js grid urls-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <!--js grid urls-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/js/jquery.jqGrid.src.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqgrid/4.6.0/js/i18n/grid.locale-en.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css" />
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <!--<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet" />
+    <style>
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .createNewGroup {
+            position: relative;
+            float: right;
+            margin-top: -40px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#switch').on('click', function () {
+                if (this.checked) {
+                    // Returns true if checked
+                    $('#itemTableDiv').hide();
+                    $('#itemGallery').show();
+
+                } else {
+                    // Returns false if not checked
+                    $('#itemTableDiv').show();
+                    $('#itemGallery').hide();
+                }
+            });
+        });
+
+
+    </script>
+
+</head>
+<body style="font-family: 'Open Sans', sans-serif !important">
+
+    <div class="popup" id="LoginDiv">
+        <h1 style="text-align:center;color:#fff">Portal Admin Tool</h1>
+
+
+        <div id="anonymousPanel" style="padding:10px">
+            <button id="sign-in" class="btn btn-primary" style="width:100%">ArcGIS Online</button>
+            <br /><br />
+            <button id="sign-in1" class="btn btn-primary" style="width:100%">Portal for ArcGIS</button>
+        </div>
+
+
+    </div>
+    <div style="display:none" id="ContentDiv">
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">ISpatialTec Portal Admin</a>
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+
+            <ul id="anonymousPanel" class="navbar-nav px-5" style="display: none;">
+                <li class="nav-item text-nowrap">
+                    <span id="sign-in" class="nav-link action">Sign In</span>
+                </li>
+            </ul>
+            <ul id="personalizedPanel" class="navbar-nav px-5" style="display: none;">
+                <li class="nav-item text-nowrap">
+                    <span id="sign-out" class="nav-link action">Sign Out</span>
+                </li>
+            </ul>
+
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div menu-include-html="Menu.html"></div>
+                <!--<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="sidebar-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#dashboard" onclick="test();">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#users" onclick="laodUsers();">
+                                    Users
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#items" onclick="laodItems();">
+                                    Items
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#groups" onclick="laodgroups();">
+                                    Groups
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#folders" onclick="loadgroups();">
+                                    Folders
+                                </a>
+                            </li>
+                        </ul>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Clone Portal Content</span>
+                            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                                <span data-feather="plus-circle"></span>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="views/CloneItems.html">
+                                    <span data-feather="file-text"></span>
+                                    Clone Items to Organization
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="views/CloneUsers.html">
+                                    <span data-feather="file-text"></span>
+                                    Clone Users to Organization
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span>
+                                    Clone Items to Developer Trial
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="views/CloneGroups.html">
+                                    <span data-feather="file-text"></span>
+                                    Clone Groups to Organization
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span>
+                                    Clone Roles to Organization
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>-->
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                    <div class="tab-content">
+                        <div id="dashboard" class="tab-pane fade show active">
+                            <br>
+                            <h3>DASHBOARD</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group mr-2">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                    <span data-feather="calendar"></span>
+                                    This week
+                                </button>
+                            </div>
+                            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+                        </div>
+                        <div id="users" class="tab-pane fade">
+                            <br>
+                            <h3>Users List</h3> <button type="button" id="export_users" class="btn btn-sm btn-outline-secondary" style="display:none">Export to CSV</button>
+                            <div id="user_colums_list"></div>
+                            <div id="grdUsers"></div>
+
+                        </div>
+                        <div id="items" class="tab-pane fade">
+                            <br>
+                            <h3>All Items</h3>
+                            <label class="switch" title="Switch to table/thumbnail" style="display:none">
+                                <input id="switch" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <div id="itemGallery" class="esri-item-gallery" style="width: 100%; display:none"></div>
+                            <div id="itemTableDiv">
+                                <button type="button" id="export_items" style="display:none" class="btn btn-sm btn-outline-secondary">Export to CSV</button>
+                                <div id="item_colums_list"></div>
+                                <div id="grdItems"></div>
+                            </div>
+
+                        </div>
+                        <div id="groups" class="tab-pane fade">
+                            <br>
+                            <h3 style="margin-bottom:3.5rem">Groups Content</h3><button type="button" id="export_Groups" class="btn btn-sm btn-outline-secondary" style="">Export to CSV</button>
+                            <button type="button" style="" class="btn btn-success  createNewGroup">Create Group</button>
+                            <div id="GroupItemList" style="display:none">
+                                <div class="row">
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Group Name:</label> <span class="col-sm-8"><input type="text" maxlength="15" class="form-control GroupTileName" name="grouptitle" placeholder="Enter group title" required /></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Summary:</label> <span class="col-sm-8"><input type="text" maxlength="15" class="form-control groupDesc" name="groupDescription" placeholder="Enter description" required /></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Tags:</label> <span class="col-sm-8"><input type="text" data-role="tagsinput" maxlength="15" class="form-control GroupTags" name="group Tags" placeholder="Enter Tags" required /></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Who can view this group:</label> <span class="col-sm-8">
+                                                <select class="form-control" id="Groupaccess">
+                                                    <option value="private">Group Members</option>
+                                                    <option value="org">Organization</option>
+                                                    <option value="public">Public</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Who can join this group:</label> <span class="col-sm-8">
+                                                <select class="form-control" id="JoinGroup">
+                                                    <option value="true">By Invitation</option>
+                                                    <option value="false">By Approval</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">contribute content to the group:</label> <span class="col-sm-8">
+                                                <select class="form-control" id="AddContentGroup">
+                                                    <option value="members">Group members</option>
+                                                    <option value="org">Only group owner and managers</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">items in the group can its members update:</label> <span class="col-sm-8">
+                                                <select class="form-control" id="UpdateItems">
+                                                    <option value="false">Only their own items</option>
+                                                    <option value="true">All items</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Who can see the list of members on the Members tab:</label> <span class="col-sm-8">
+                                                <select class="form-control" id="Memberspermission">
+                                                    <option value="false">All group members</option>
+                                                    <option value="true">Only group owner and managers</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Sort Fields:</label> <span class="col-sm-8">
+                                                <select class="form-control" id="SortingFields">
+                                                    <option value="title">Title</option>
+                                                    <option value="owner">Owner</option>
+                                                    <option value="avgrating">Average rating</option>
+                                                    <option value="numviews">Number of Views</option>
+                                                    <option value="created">Created data</option>
+                                                    <option value="modified">Modified Date</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Sort Order:</label> <span class="col-sm-8">
+                                                <select class="form-control" id="SortingOrder">
+                                                    <option value="asc">Ascending</option>
+                                                    <option value="desc">Descending</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Disable Members Leaving Group:</label> <span class="col-sm-8"><input type="checkbox" maxlength="15" class="MembersAccess" name="members" placeholder="Enter group title" required /></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-8">
+                                        <div class="row">
+                                            <label class="col-sm-4">Thumbnail:</label> <span class="col-sm-8"><input type="file" maxlength="15" class="" id="GroupThumbnail" name="Thumbnail" placeholder="Enter Attachment" required /></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="panel-footer groupsForm" style="display:none;float:right">
+                                    <button type="button" id="SaveGroup" class="btn btn-success pull-right">Save</button>
+                                    <button type="button" id="cancelgroup" class="btn btn-danger pull-right">Cancel</button>
+                                </div>
+                            </div>
+
+                            <div id="groupsaccordion" style="" class="esri-item-gallery"></div>
+                            <div id="groupsBulkUpdate" class="table-responsive" style="display:none">
+                                <table class="table table-bordered groupsTable" style="border: 1px solid black">
+                                    <tr>
+                                        <th>Summary</th>
+                                        <th>Tags</th>
+                                        <th>Access</th>
+                                        <th>Join Type</th>
+                                        <th>Content Updation</th>
+                                        <th>Update Items</th>
+                                        <th>Members List</th>
+                                        <th>Sort Fields</th>
+                                        <th>Sort Order</th>
+                                        <!--<th style="display:none">Thumbnail</th>-->
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" data-target="snippet" placeholder="Enter Summary" class="form-control" id="bulkgroupSummary" /></td>
+                                        <td><input type="text" data-target="tags" placeholder="Enter tags comma separated" class="form-control" id="bulkgroupTags" /></td>
+                                        <td>
+                                            <select data-target="access"  class="form-control" id="bulkgroupAccess">
+                                                <option value="">Select</option>
+                                                <option value="private">Group Members</option>
+                                                <option value="org">Organization</option>
+                                                <option value="public">Public</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select data-target="isInvitationOnly" class="form-control" id="bulkjointype">
+                                                <option value="">Select</option>
+                                                <option value="true">By Invitation</option>
+                                                <option value="false">By Approval</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select data-target="contribute" class="form-control" id="BulkcontentUpdation">
+                                                <option value="">Select</option>
+                                                <option value="members">Group members</option>
+                                                <option value="org">Only group owner and managers</option>
+                                            </select>
+                                        </td>
+                                        <td>
+
+                                            <select data-target="update" class="form-control" id="bulkitemsupdate">
+                                                <option value="">Select</option>
+                                                <option value="false">Only their own items</option>
+                                                <option value="true">All items</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select data-target="hiddenMembers" class="form-control" id="bulkmembersList">
+                                                <option value="">Select</option>
+                                                <option value="false">All group members</option>
+                                                <option value="true">Only group owner and managers</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select data-target="sortField" class="form-control" id="BulkSortingFields">
+                                                <option value="">Select</option>
+                                                <option value="title">Title</option>
+                                                <option value="owner">Owner</option>
+                                                <option value="avgrating">Average rating</option>
+                                                <option value="numviews">Number of Views</option>
+                                                <option value="created">Created data</option>
+                                                <option value="modified">Modified Date</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select data-target="sortOrder" class="form-control" id="BulkSortingOrder">
+                                                <option value="">Select</option>
+                                                <option value="asc">Ascending</option>
+                                                <option value="desc">Descending</option>
+                                            </select>
+                                        </td>
+                                        <!--<td>
+                                            <input style="display:none" data-target="thumbnail"  type="file" maxlength="15" class="form-control" id="BulkGroupThumbnail" name="Thumbnail" placeholder="upload Attachment" required />
+                                        </td>-->
+                                    </tr>
+
+                                </table>
+                                <div class="panel-footer groupsBulkForm" style="float:right">
+                                    <button type="button" id="SaveBulkGroup" class="btn btn-success pull-right">Update Bulk</button>
+                                    <button type="button" id="CancelBulkGroup" class="btn btn-danger pull-right">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="folders" class="tab-pane fade">
+                            <br>
+                            <h3>Folders Content</h3>
+                            <p style="display:none">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                            <button type="button" style="" class="btn btn-success  createNewFolder">Create Folder</button>
+                            <div style="margin-top:60px">
+                                <div id="foldersaccordion">
+                                    <table id="pays_grid"></table>
+                                    <div id="pays_grid_pager"></div>
+                                </div>
+                                <div id="FolderContentList" style="display:none">
+                                    <div class="row">
+                                        <div class="form-group col-sm-8">
+                                            <div class="row">
+                                                <label class="col-sm-4">Folder Name:</label> <span class="col-sm-8"><input type="text" maxlength="15" class="form-control Foldernameinput" name="Foldertitle" placeholder="Enter folder title" required /></span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="panel-footer FoldersForm" style="float:right">
+                                        <button type="button" id="SaveFolder" class="btn btn-success pull-right">Save</button>
+                                        <button type="button" id="cancelFolder" class="btn btn-danger pull-right">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://js.arcgis.com/4.15/"></script>
+
+    <script src="scripts/chart.js"></script>
+    <!--scrips for loading data-->
+    <script src="scripts/PortalAdmin.Common.js"></script>
+    <script src="scripts/PortalAdmin.groups.js"></script>
+    <script src="scripts/PortalAdmin.Items.js"></script>
+    <script src="scripts/PortalAdmin.Users.js"></script>
+    <script src="scripts/portalAdmin.Folders.js"></script>
+    <script src="scripts/PortalAdmin.Dashboard.js"></script>
+    <script>
+        require(["esri/request",
+            "esri/portal/Portal", "esri/identity/OAuthInfo", "esri/identity/IdentityManager"
+        ], function (esriRequest, Portal, OAuthInfo, esriId
+        ) {
+            var info = new OAuthInfo({
+                appId: "q244Lb8gDRgWQ8hM",
+                popup: false
+            });
+            esriId.registerOAuthInfos([info]);
+            esriId.checkSignInStatus(info.portalUrl + "/sharing")
+                .then(function (cred) {
+                    $("#LoginDiv").css("display", "none");
+                    $("#ContentDiv").css("display", "block");
+                    $("#personalizedPanel").css("display", "block");
+
+                })
+                .catch(function (e) {
+                    console.log(e)
+
+                });
+            document.getElementById("sign-in").addEventListener("click", function () {
+                esriId.getCredential(info.portalUrl + "/sharing");
+            });
+            document.getElementById("sign-out").addEventListener("click", function () {
+                esriId.destroyCredentials();
+                window.location.reload();
+            });
+
+        });
+    </script>
+
+</body>
+</html>

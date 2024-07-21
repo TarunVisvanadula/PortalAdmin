@@ -1,0 +1,1120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="Responsive, HTML5">
+    <!-- /meta tags -->
+    <title> Portal Admin</title>
+
+    <!-- Site favicon -->
+    <link rel="shortcut icon" href="../scripts/libs/CustomTheme/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- /site favicon -->
+    <!-- Font Icon Styles -->
+    <link href="../scripts/libs/CustomTheme/assets/fonts/noir-pro/styles.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/vendor/gaxon-icon/styles.css" rel="stylesheet" />
+    <!-- /font icon Styles -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/css/default/theme-semidark.min.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/css/default/portal-admin-styles.css" rel="stylesheet" />
+    <link href="../Styles/Bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="../Styles/Jsgrid.css" rel="stylesheet" />
+    <link href="../Styles/Jsgrid-theme.css" rel="stylesheet" />
+    <link href="../Styles/Jquery_ui-redmond.css" rel="stylesheet" />
+    <script src="../scripts/src/Jquery-ui.js"></script>
+
+    <link href="../Styles/PortalAdmin_driftTheme.css" rel="stylesheet" />
+    <script>
+        var rtlEnable = '';
+        var $mediaUrl = '';
+        var $baseUrl = '../';
+        var current_path = window.location.href.split('/').pop();
+        if (current_path == '') {
+            current_path = 'index.html';
+        }
+
+
+    </script>
+    <script src="../scripts/libs/CustomTheme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/moment/js/moment.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+</head>
+<body class="dt-layout--default dt-sidebar--fixed dt-header--fixed">
+    <!-- Loader -->
+    <div class="modal fade" id="ImportUserModal" tabindex="-1" role="dialog" aria-labelledby="ImportUserModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ImportUserlLabel">Upload File</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="input-group mb-3">
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="input-file-now" class="file-upload" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="uploadUsers" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="defaul-modal" tabindex="-1" role="dialog"
+         aria-labelledby="model-1"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <!-- Modal Content -->
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title" id="model-1">Upload Users</h3>
+                    <button type="button" class="close closeModal" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- /modal header -->
+                <!-- Modal Body -->
+                <div class="dt-card__body">
+                    <form action="" method="POST" id="uploadItemForm">
+                        <div class="dropzone border-dashed border-primary dz-clickable dz-started" style="min-height:100px">
+                            <input type="file" name="filename" id="inputGroupFile01">
+                            <p>Drag your files here or click in this area.</p>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm" id="uploadUsers1">
+                        Upload
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dt-loader-container">
+        <div class="dt-loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+            </svg>
+        </div>
+    </div>
+    <!-- /loader -->
+    <!-- Root -->
+    <div class="dt-root">
+        <div class="dt-root__inner">
+            <!-- Header -->
+            <header class="dt-header">
+                <!-- Header container -->
+                <div header-include-html="Header.html"></div>
+                <!-- /header container -->
+            </header>
+            <main class="dt-main">
+                <!-- Sidebar -->
+                <aside id="main-sidebar" class="dt-sidebar">
+
+                    <div menu-include-html="Menu.html"></div>
+                </aside>
+                <div class="dt-content-wrapper">
+                    <div class="dt-content">
+                        <!-- Page Header -->
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item breadcrumb_Home" style="font-weight:600"><a href="javascript:void(0)">Users</a></li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-12 order-xl-12">
+
+                                <!-- Card -->
+                                <div class="dt-card" id="MainCard">
+
+                                    <!-- Card Header -->
+                                    <div class="dt-card__header mb-0 row">
+
+                                        <!-- Card Heading -->
+                                        <!-- /card heading -->
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group form-row">
+                                                <div class="col-md-1 col-form-label text-sm-left w-auto" for="email-2" style="margin-right:15px">Page Size</div>
+                                                <div class="col-md-1 col-9 " style="margin-left: -35px;">
+                                                    <select class="custom-select custom-select-sm" id="pageSize">
+                                                        <option value="5">5</option>
+                                                        <option value="10">10</option>
+                                                        <option value="30" selected="selected">30</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-7">
+                                                    <div class="btn-group">
+                                                        <a id="dLabel" role="button" data-toggle="dropdown" class="dropdown-toggle btn btn-primary btn-sm  border"
+                                                           href="">Actions</a>
+                                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                            <li class="dropdown-submenu">
+                                                                <a class="dropdown-item dropdown-toggle" href="javascript:void(0);">Export Users</a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" id="ExportUsersCsv" href="javascript:void(0);">CSV</a></li>
+                                                                    <li><a class="dropdown-item" id="ExportUsersJson" href="javascript:void(0);">Json</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="dropdown-submenu">
+                                                                <a class="dropdown-item dropdown-toggle" href="javascript:void(0);">Export Roles</a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" id="ExportRolesCsv" href="javascript:void(0);">CSV</a></li>
+                                                                    <li><a class="dropdown-item" id="ExportRolesJson" href="javascript:void(0);">Json</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="dropdown-submenu">
+                                                                <a class="dropdown-item dropdown-toggle" href="javascript:void(0);">Import User</a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" data-toggle="modal" data-target="#defaul-modal" id="ImportUsersCsv" href="javascript:void(0);">CSV/Json</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="dropdown-submenu">
+                                                                <a class="dropdown-item dropdown-toggle" href="javascript:void(0);">Tags</a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item AddTagstoUsers" href="javascript:void(0);">Add Tags</a></li>
+                                                                    <li><a class="dropdown-item RemoveTagsfromUsers" href="javascript:void(0);">Remove Tags</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="dropdown-submenu">
+                                                                <a class="dropdown-item dropdown-toggle" href="javascript:void(0);">Share</a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item Invitetogroups" href="javascript:void(0);">Invite to groups</a></li>
+                                                                    <li><a class="dropdown-item Uninvitefromgroups" href="javascript:void(0);">Uninvite from groups</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a class="dropdown-item UsersBulkUpdate" href="javascript:void(0);">Bulk Update</a></li>
+                                                            <li style="display:none"><a class="dropdown-item DeletePendingUser" href="javascript:void(0);">Delete Pending user</a></li>
+                                                            <li><a class="dropdown-item DeleteInvitation" href="javascript:void(0);">Delete Invitations</a></li>
+                                                        </ul>
+                                                        <div class="btn-group">
+                                                            <div id="user_colums_list">
+
+                                                            </div>
+                                                            <input class="ml-1 form-control form-control-sm"  type="text" title="search by user name/user type/role/access" placeholder="search by user name/user type/role/access" id="search">
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-3 text-right">
+
+                                                    <button type="button" class="btn btn-primary btn-sm mr-2 mb-2 createNewUser">Create User</button>
+                                                    <button type="button" class="btn btn-dark btn-sm mr-2 mb-2 DeleteUsers">Delete User</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                       
+
+                                        <!-- Card Tools -->
+                                        <!-- /card tools -->
+
+                                    </div>
+                                    <!-- /card header -->
+                                    <!-- Card Body -->
+                                    <!--<div class="dt-card__body pb-0">-->
+                                    <div class="" style="padding:5px">
+                                        <!-- Tables -->
+                                        <div id="grdUsers"></div>
+                                        <!-- /table -->
+                                    </div>
+                                    <!-- /card body -->
+
+                                </div>
+
+
+                                <div class="dt-card" id="GroupInfo">
+                                    <div class="dt-card__header bg-light-blue p-3" style="display:none">
+                                        <h1 class="p-0 m-0 text-white">Groups Information </h1>
+                                        <button type="button" class="close text-white display-1" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="dt-card__body">
+                                        <div class="table-responsive">
+                                            <div id="Usergroupinfo"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Edit/View/Create User -->
+                                <div class="dt-card" id="EditUser">
+                                    <div class="dt-card__header bg-light-blue p-3" style="display:none">
+                                        <h1 class="p-0 m-0 text-white User_label">Edit User</h1>
+                                        <button type="button" class="close text-white display-1" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="dt-card__body">
+
+                                        <form id="usersForm" class="" method="post" enctype="multipart/form-data">
+
+
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">User Name</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="text" class="form-control userName" id="UserName" name="Username" placeholder="Enter user name" required disabled readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">First Name</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="text" class="form-control userFirstname" name="FirstName" placeholder="Enter first name" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Last Name</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="text" class="form-control userlastname" name="LastName" placeholder="Enter last name" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Description</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <!--<input type="text" class="form-control UserDesc" name="Description" placeholder="Enter description" required />-->
+                                                    <textarea class="form-control UserDesc" rows="3" name="Description" placeholder="Enter description" required> </textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-row" style="">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Tags</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="text" value="" data-role="tagsinput" name="Tags" class="form-control UserTags" placeholder="Enter tags" />
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Email</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="email" class="form-control useremail" name="Email" placeholder="Enter email" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Role</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="userrole" name="Role">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Access</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="Useraccess" name="UserAccessType">
+                                                        <option value="">Select Access</option>
+                                                        <option value="private">private</option>
+                                                        <option value="org">Organization</option>
+                                                        <option value="public">Public</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row pass_sec">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Password</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="password" class="form-control userPassword" name="password" placeholder="Enter password" required />
+                                                </div>
+                                            </div>
+                                            <div class="User-Lic">
+                                                <div class="form-row ">
+                                                    <label class="col-md-2 col-sm-3 col-form-label text-sm-left">License Type</label>
+                                                    <div class="col-md-6 col-sm-3 mb-2">
+                                                        <select class="form-control1 custom-select custom-select-sm" id="userLicense" name="userLicenseType">
+                                                            <option value="viewerUT">viewer</option>
+                                                            <option value="creatorUT">creator</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row usrType">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">User Type</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="userType" name="usertype">
+                                                        <option value="">Select UserType</option>
+                                                        <option value="arcgisonly">arcgisonly</option>
+                                                        <option value="both">both</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- /form row -->
+                                        </form>
+
+
+
+                                    </div>
+                                    <div class="modal-footer usr_footer">
+                                        <button type="button" id="SaveUser" class="btn btn-primary btn-sm" data-dismiss="modal">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Users wizard screen-->
+                                <div class="dt-card" id="Wizard_Users" style="display:none">
+                                    <div class="dt-card__header bg-light-blue p-3" style="display:none">
+                                        <h1 class="p-0 m-0 text-white wizard_header"></h1>
+                                        <button type="button" class="close text-white display-1 Firstpreview" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="dt-card__body">
+
+                                        <div class="container-fluid">
+                                            <div class="row justify-content-center">
+                                                <div class="col-11 col-sm-9 col-md-10 col-lg-6 col-xl-10 text-center p-0 mt-0	 mb-2">
+                                                    <div class="Stepscard px-0 pt-4 pb-0 mt-3 mb-3">
+
+                                                        <form id="msform">
+                                                            <!-- progressbar -->
+                                                            <ul id="progressbar">
+                                                                <li class="active" id="SelectItems"><strong>Select Items</strong></li>
+                                                                <li id="Confirm"><strong>Confirm</strong></li>
+                                                                <li id="Finish"><strong>Finish</strong></li>
+
+                                                            </ul>
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </div> <br> <!-- fieldsets -->
+                                                            <fieldset id="wizard_itemstab">
+                                                                <div class="form-card">
+                                                                    <div class="row" style="display:none">
+                                                                        <div class="col-7">
+                                                                            <h3 class="fs-title">Select Items</h3>
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <h2 class="steps">Step 1 - 3</h2>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row"><div class="col-md-12 text-center" id="radionode"></div></div>
+                                                                    <div class="form-row users_radbtn" style="position:absolute;bottom:0px;display:none">
+                                                                        <div class="col-md-12 text-center">
+                                                                            <!-- Radio Button -->
+                                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                                <input class="custom-control-input addTagsrad" type="radio" name="tagsreplace" id="inlineRadio1" value="option1" checked>
+                                                                                <label class="custom-control-label title1" for="inlineRadio1">Add to Tags</label>
+                                                                            </div>
+                                                                            <!-- /radio button -->
+                                                                            <!-- Radio Button -->
+                                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                                <input class="custom-control-input ReplaceTagsrad" type="radio" name="tagsreplace" id="inlineRadio2" value="option2">
+                                                                                <label class="custom-control-label title2" for="inlineRadio2">Replace Tags</label>
+                                                                            </div>
+                                                                            <!-- /radio button -->
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div id="GroupItemsContol" style="width:auto !important"></div>
+
+                                                                </div> <input type="button" id="login-done" name="next" class="next action-button getselectetitems" value="Next" />
+                                                            </fieldset>
+                                                            <fieldset id="wizard_confirmtab">
+                                                                <div class="form-card">
+                                                                    <div class="row" style="display:none">
+                                                                        <div class="col-7">
+                                                                            <h2 class="fs-title">Selected Information:</h2>
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <h2 class="steps">Step 2 - 3</h2>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 order-xl-8 pl-0 selectedusersdiv">
+
+                                                                            <!-- Card -->
+                                                                            <div class="dt-card dt-card__full-height pb-4">
+
+                                                                                <!-- Card Header -->
+                                                                                <div class="dt-card__header bg-primary mb-3 py-3">
+
+                                                                                    <!-- Card Heading -->
+                                                                                    <div class="dt-card__heading">
+                                                                                        <h3 class="dt-card__title text-white fs-title ">Selected Users</h3>
+                                                                                    </div>
+                                                                                    <!-- /card heading -->
+                                                                                    <!-- Card Tools -->
+                                                                                    <div class="dt-card__tools">
+
+                                                                                        <div class="badge badge-light display-3 usrcount">4</div>
+
+                                                                                    </div>
+                                                                                    <!-- /card tools -->
+
+                                                                                </div>
+                                                                                <!-- /card header -->
+                                                                                <!-- Card Body -->
+                                                                                <div class="dt-card__body p-0 max-h-200 ps-custom-scrollbar">
+                                                                                    <!-- Widget -->
+                                                                                    <div class="dt-widget dt-widget-hover" id="selected_users">
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35" src="https://via.placeholder.com/150x150"
+                                                                                                     alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">
+                                                                                                    I
+                                                                                                    did not able to receive
+                                                                                                    message on my mail.
+                                                                                                </a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+                                                                                                    <a class="text-dark" href="javascript:void(0)">Garry Sobars</a>
+                                                                                                    created ticket 15 mins ago
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35" src="https://via.placeholder.com/150x150"
+                                                                                                     alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+
+                                                                                    </div>
+                                                                                    <!-- /widget -->
+                                                                                </div>
+                                                                                <!-- /card body -->
+
+                                                                            </div>
+                                                                            <!-- /card -->
+
+                                                                        </div>
+
+                                                                        <div class="col-md-6 order-xl-8 pl-0 import_usr">
+
+                                                                            <!-- Card -->
+                                                                            <div class="dt-card dt-card__full-height pb-4">
+
+                                                                                <!-- Card Header -->
+                                                                                <div class="dt-card__header bg-primary mb-3 py-3">
+
+                                                                                    <!-- Card Heading -->
+                                                                                    <div class="dt-card__heading">
+                                                                                        <h3 class="dt-card__title text-white fs-title1">Selected Fields for Exporting</h3>
+                                                                                    </div>
+                                                                                    <!-- /card heading -->
+                                                                                    <!-- Card Tools -->
+                                                                                    <div class="dt-card__tools">
+
+                                                                                        <div class="badge badge-light display-3 itemcount">4</div>
+
+                                                                                    </div>
+                                                                                    <!-- /card tools -->
+
+                                                                                </div>
+                                                                                <!-- /card header -->
+                                                                                <!-- Card Body -->
+                                                                                <div class="dt-card__body p-0 max-h-200 ps-custom-scrollbar">
+                                                                                    <!-- Widget -->
+                                                                                    <div class="dt-widget dt-widget-hover" id="selected_items">
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35" src="https://via.placeholder.com/150x150"
+                                                                                                     alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35"
+                                                                                                     src="https://via.placeholder.com/150x150" alt="User">
+                                                                                                <!-- /avatar -->
+
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">
+                                                                                                    I
+                                                                                                    did not able to receive
+                                                                                                    message on my mail.
+                                                                                                </a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+                                                                                                    <a class="text-dark" href="javascript:void(0)">Garry Sobars</a>
+                                                                                                    created ticket 15 mins ago
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+                                                                                        <!-- Widget Item -->
+                                                                                        <div class="dt-widget__item">
+
+                                                                                            <!-- Widget Image -->
+                                                                                            <div class="dt-widget__img">
+                                                                                                <!-- Avatar -->
+                                                                                                <img class="dt-avatar size-35" src="https://via.placeholder.com/150x150"
+                                                                                                     alt="User">
+                                                                                                <!-- /avatar -->
+                                                                                            </div>
+                                                                                            <!-- /widget image -->
+                                                                                            <!-- Widget Info -->
+                                                                                            <div class="dt-widget__info text-truncate">
+                                                                                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">User Name Goes Here</a>
+                                                                                                <p class="dt-widget__subtitle text-truncate text-light-gray">
+
+                                                                                                    Lorem Sipum
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <!-- /widget info -->
+
+
+
+                                                                                        </div>
+                                                                                        <!-- /widgets item -->
+
+                                                                                    </div>
+                                                                                    <!-- /widget -->
+                                                                                </div>
+                                                                                <!-- /card body -->
+
+                                                                            </div>
+                                                                            <!-- /card -->
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div> <input id="saveUseroptions" type="button" name="next" class="next action-button" value="Confirm" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                                            </fieldset>
+                                                            <fieldset id="wizard_Successtab">
+                                                                <div class="form-card">
+                                                                    <div class="row" style="display:none">
+                                                                        <div class="col-7">
+                                                                            <h2 class="fs-title">Finish:</h2>
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <h2 class="steps">Step 3 - 3</h2>
+                                                                        </div>
+                                                                    </div> <br><br>
+                                                                    <div id="loader" class="spinner-border text-primary" style="width: 3rem; height: 3rem;margin-left:50%" role="status">
+                                                                        <span class="sr-only">Loading...</span>
+                                                                    </div>
+
+
+                                                                    <div id="migrate-success" class="form-card" style="display:none">
+                                                                        <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                                                                        </div> <br><br>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-7 text-center">
+                                                                                <h5 class="purple-text text-center success_msg">Successfully Updated Users</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="migrate-fail" class="form-card" style="display:none">
+                                                                        <h2 class="purple-text text-center"><strong>Failed !</strong></h2> <br>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-7 text-center">
+                                                                                <h3 style="color:red" class="red-text text-center failure_msg">Failed to update Users</h3>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-3"> <img src="../Images/Failure.png" class="fit-image"> </div>
+                                                                        </div> <br><br>
+
+                                                                    </div>
+                                                                </div>
+                                                                <input type="button" id="ReturnHome" name="next" class="action-button" value="Home" />
+                                                            </fieldset>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="UserCapabilities" style="display:none">
+                                    <div class="dt-card__body">
+                                        <form action="" id="bulkUserform">
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Role</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="Bulkuserroles" name="Role"></select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Access</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="BulkUseraccess" name="AccessType">
+                                                        <option value="">Select Access</option>
+                                                        <option value="private">private</option>
+                                                        <option value="org">Organization</option>
+                                                        <option value="public">Public</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Description</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="text" class="form-control BulkUserDesc" name="Description" placeholder="Enter description" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">User Type</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="BulkuserType" name="UserType">
+                                                        <option value="">Select Usertype</option>
+                                                        <option value="arcgisonly">arcgisonly</option>
+                                                        <option value="both">both</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row" style="display:none">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Assign Credits</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="number" class="form-control Bulkusercredits" name="Credits" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">User Activation</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="Bulkuseractivation" name="Activation">
+                                                        <option value="">Select Activation</option>
+                                                        <option value="enable">Enable</option>
+                                                        <option value="disable">Disable</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row" style="display:none">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">User Level</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <select class="form-control1 custom-select custom-select-sm" id="BulkuserLevel" name="UserLevel">
+                                                        <option value="">Select Level</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="dt-footer"> © 2020  <a href="https://www.ispatialtec.com/" class="ml-2">  iSpatial Techno Solutions</a>, All Rights Reserved </footer>
+                    <!-- /footer -->
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../scripts/libs/CustomTheme/plugins/masonry-layout/js/masonry.pkgd.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/sweetalert2/js/sweetalert2.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/functions.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/customizer.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/script.js"></script>
+    <!--<script src="../scripts/libs/CustomTheme/plugins/chart.js/js/Chart.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/echarts/js/echarts.min.js"></script>-->
+    <link rel="stylesheet" href="https://rawgit.com/timschlechter/bootstrap-tagsinput/master/src/bootstrap-tagsinput.css">
+
+    <script src="https://rawgit.com/bassjobsen/Bootstrap-3-Typeahead/master/bootstrap3-typeahead.js"></script>
+    <script src="../scripts/PortalAdmin.Common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://js.arcgis.com/4.15/"></script>
+
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+    <script src="https://rawgit.com/TimSchlechter/bootstrap-tagsinput/master/src/bootstrap-tagsinput.js"></script>
+
+    <script src="../scripts/PortalAdmin.Users.js"></script>
+    <!--<script src="../scripts/Notify.js"></script>-->
+    <!--<script src="../scripts/libs/CustomTheme/plugins/sweetalert2/js/sweetalert2.js"></script>-->
+
+    <script>
+        $(document).ready(function () {
+            $(".fa-sitemap").click(function () {
+                $("#GroupInfo").show();
+                $("#MainCard").hide();
+            });
+            $(".fa-pencil").click(function () {
+                $("#EditUser").show();
+                $("#MainCard").hide();
+            });
+
+            $(".close").click(function () {
+                $("#GroupInfo").hide();
+                $("#EditUser").hide();
+                $("#MainCard").show();
+
+            });
+
+            $(document).ready(function () {
+                $('#uploadItemForm input').change(function () {
+                    $('#uploadItemForm p').text("selected: " + this.files[0].name);
+                });
+            });
+
+
+        });
+    </script>
+	 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YV23KEESC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3YV23KEESC');
+    </script>
+</body>
+</html>

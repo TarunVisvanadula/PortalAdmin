@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Drift - A fully responsive, HTML5 based admin template">
+    <meta name="keywords" content="Responsive, HTML5, admin theme, business, professional, jQuery, web design, CSS3, sass">
+    <!-- /meta tags -->
+    <title> Portal Admin</title>
+
+    <!-- Site favicon -->
+    <link rel="shortcut icon" href="../scripts/libs/CustomTheme/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- /site favicon -->
+    <!-- Font Icon Styles -->
+    <link href="../scripts/libs/CustomTheme/assets/fonts/noir-pro/styles.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/vendor/gaxon-icon/styles.css" rel="stylesheet" />
+    <!-- /font icon Styles -->
+    <!-- Perfect Scrollbar stylesheet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <!-- /perfect scrollbar stylesheet -->
+
+
+
+    <link href="../scripts/libs/CustomTheme/assets/css/default/theme-semidark.min.css" rel="stylesheet" />
+    <link href="../scripts/libs/CustomTheme/assets/css/default/portal-admin-styles.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+    <!--multiselect dropdown-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css">
+
+
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.css" />
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link href="../Styles/PortalAdmin_driftTheme.css" rel="stylesheet" />
+
+
+    <script>
+        var rtlEnable = '';
+        var $mediaUrl = '';
+        var $baseUrl = '../';
+        var current_path = window.location.href.split('/').pop();
+        if (current_path == '') {
+            current_path = 'index.html';
+        }
+
+
+    </script>
+    <!--<script src="../scripts/libs/CustomTheme/plugins/jquery/js/jquery.min.js"></script>-->
+    <script src="../scripts/libs/CustomTheme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/moment/js/moment.min.js"></script>
+    <!-- Perfect Scrollbar jQuery -->
+    <script src="../scripts/libs/CustomTheme/plugins/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+    <!-- /perfect scrollbar jQuery -->
+
+</head>
+<body class="dt-layout--default dt-sidebar--fixed dt-header--fixed">
+    <!-- Loader -->
+
+    <div class="dt-loader-container">
+        <div class="dt-loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+            </svg>
+        </div>
+    </div>
+    <!-- /loader -->
+    <!-- Root -->
+    <div class="dt-root">
+        <div class="dt-root__inner">
+            <!-- Header -->
+            <header class="dt-header">
+                <div header-include-html="Header.html"></div>
+            </header>
+            <!-- /header -->
+            <!-- Site Main -->
+            <main class="dt-main">
+                <!-- Sidebar -->
+                <aside id="main-sidebar" class="dt-sidebar">
+                    <div menu-include-html="Menu.html"></div>
+                </aside>
+                <div class="dt-content-wrapper">
+                    <div class="dt-content">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item breadcrumb_Home" style="font-weight:600"><a href="javascript:void(0)">Folder</a></li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-12 order-xl-12">
+
+                                <!-- Card -->
+                                <div class="dt-card" id="MainCard">
+                                    <div class="dt-card__header mb-0 row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-row">
+                                                <div class="col-md-1 col-form-label text-sm-left" for="email-2">Page Size</div>
+                                                <div class="col-md-1 col-9">
+                                                    <select class="custom-select custom-select-sm " id="pageSize">
+                                                        <option value="5">5</option>
+                                                        <option value="10">10</option>
+                                                        <option value="30" selected="selected">30</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input class="ml-1 form-control form-control-sm" type="text" placeholder="search by folder name/user name" id="search">
+                                                </div>
+                                                <div class="col-md-3 text-right">
+                                                    <button type="button" class="btn btn-primary btn-sm mr-2 mb-2 createNewFolder">Create Folder</button>
+                                                    <button type="button" class="btn btn-dark btn-sm mr-2 mb-2 DeleteFolders">Delete Folder</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="" style="padding:5px">
+                                        <!-- Tables -->
+                                        <div id="foldersaccordion"></div>
+                                        <!-- /table -->
+                                    </div>
+                                </div>
+                                <div class="dt-card" id="GroupInfo" style="display:none">
+                                    <div class="dt-card__header bg-light-blue p-3" style="display:none">
+                                        <h1 class="p-0 m-0 text-white">Item Information </h1>
+                                        <button type="button" class="close text-white display-1" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="dt-card__body">
+                                        <div class="table-responsive">
+                                            <div id="groupIteminfo"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Edit/View/Create User -->
+                                <div class="dt-card" id="EditFolder" style="display:none">
+                                    <div class="dt-card__header bg-light-blue p-3" style="display:none">
+                                        <h1 class="p-0 m-0 text-white Folder_label">Edit Folder</h1>
+                                        <button type="button" class="close text-white display-1" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="dt-card__body">
+
+                                        <form id="usersForm" class="" method="post" enctype="multipart/form-data">
+                                            <div class="form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label text-sm-left">Folder Name</label>
+                                                <div class="col-md-6 col-sm-3 mb-2">
+                                                    <input type="text" class="form-control Foldernameinput" name="foldername" placeholder="Enter folder name" required>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer Grp_footer">
+                                        <button type="button" id="SaveFolder" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="dt-footer"> © 2020  <a href="https://www.ispatialtec.com/" class="ml-2">  iSpatial Techno Solutions</a>, All Rights Reserved </footer>
+                    <!-- /footer -->
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+    <script src="../scripts/libs/CustomTheme/plugins/masonry-layout/js/masonry.pkgd.min.js"></script>
+    <script src="../scripts/libs/CustomTheme/plugins/sweetalert2/js/sweetalert2.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/functions.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/customizer.js"></script>
+    <script src="../scripts/libs/CustomTheme/assets/js/default/script.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/timschlechter/bootstrap-tagsinput/master/src/bootstrap-tagsinput.css">
+    <script src="https://rawgit.com/bassjobsen/Bootstrap-3-Typeahead/master/bootstrap3-typeahead.js"></script>
+    <script src="../scripts/PortalAdmin.Common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://js.arcgis.com/4.15/"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+    <script src="https://rawgit.com/TimSchlechter/bootstrap-tagsinput/master/src/bootstrap-tagsinput.js"></script>
+    <script src="../scripts/portalAdmin.Folders.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".fa-sitemap").click(function () {
+                $("#GroupInfo").show();
+                $("#MainCard").hide();
+            });
+            $(".fa-pencil").click(function () {
+                $("#EditUser").show();
+                $("#MainCard").hide();
+            });
+
+            $(".close").click(function () {
+                $("#GroupInfo").hide();
+                $("#EditUser").hide();
+                $("#MainCard").show();
+
+            });
+
+
+        });
+    </script>
+	 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YV23KEESC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3YV23KEESC');
+    </script>
+</body>
+</html>

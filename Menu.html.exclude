@@ -1,0 +1,69 @@
+﻿<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="sidebar-sticky pt-3">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#dashboard" onclick="test();">
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#users" onclick="laodUsers();">
+                    Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#items" onclick="laodItems();">
+                    Items
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#groups" onclick="laodgroups();">
+                    Groups
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#folders" onclick="loadgroups();">
+                    Folders
+                </a>
+            </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Clone Portal Content</span>
+            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                <span data-feather="plus-circle"></span>
+            </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="views/CloneItems.html">
+                    <span data-feather="file-text"></span>
+                    Clone Items to Organization
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Clone Items to Developer Trial
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="views/CloneUsers.html">
+                    <span data-feather="file-text"></span>
+                    Clone Users to Organization
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="views/CloneGroups.html">
+                    <span data-feather="file-text"></span>
+                    Clone Groups to Organization
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Clone Roles to Organization
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
